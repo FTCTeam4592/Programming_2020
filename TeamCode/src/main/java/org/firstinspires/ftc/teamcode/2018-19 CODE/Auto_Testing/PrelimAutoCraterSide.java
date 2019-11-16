@@ -4,12 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 import org.firstinspires.ftc.teamcode.RobotBase;
-import org.firstinspires.ftc.teamcode.TensorFlow;
-
-import java.util.List;
 
 @Autonomous(name = "GREENBEANMONEYMACHINE")
 @Disabled

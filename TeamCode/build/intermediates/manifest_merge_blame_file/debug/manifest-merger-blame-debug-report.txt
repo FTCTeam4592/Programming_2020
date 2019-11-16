@@ -1,0 +1,654 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<!--
+3 Note: the actual manifest file used in your APK merges this file with contributions
+4     from the modules on which your app depends (such as FtcRobotController, etc).
+5     So it won't ultimately be as empty as it might here appear to be :-)
+6-->
+7<!-- The package name here determines the package for your R class and your BuildConfig class -->
+8<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+9    package="com.qualcomm.ftcrobotcontroller"
+10    android:versionCode="31"
+11    android:versionName="4.3" >
+12
+13    <uses-sdk
+14        android:minSdkVersion="19"
+14-->/Users/jai/Desktop/Programming_2020-master/TeamCode/src/main/AndroidManifest.xml
+15        android:targetSdkVersion="19" />
+15-->/Users/jai/Desktop/Programming_2020-master/TeamCode/src/main/AndroidManifest.xml
+16
+17    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+17-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-81
+17-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:22-78
+18    <uses-permission
+18-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:11:5-13:35
+19        android:name="android.permission.ACCESS_WIFI_STATE"
+19-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:12:9-60
+20        android:required="true" />
+20-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:13:9-32
+21    <uses-permission
+21-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:14:5-16:35
+22        android:name="android.permission.CHANGE_WIFI_STATE"
+22-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:15:9-60
+23        android:required="true" />
+23-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:16:9-32
+24    <uses-permission android:name="android.permission.BLUETOOTH" />
+24-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:17:5-68
+24-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:17:22-65
+25    <uses-permission
+25-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:18:5-20:35
+26        android:name="android.permission.ACCESS_NETWORK_STATE"
+26-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:19:9-63
+27        android:required="true" />
+27-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:20:9-32
+28    <uses-permission
+28-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:21:5-23:35
+29        android:name="android.permission.CHANGE_NETWORK_STATE"
+29-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:22:9-63
+30        android:required="true" />
+30-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:23:9-32
+31    <uses-permission
+31-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:24:5-26:35
+32        android:name="android.permission.INTERNET"
+32-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:25:9-51
+33        android:required="true" />
+33-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:26:9-32
+34    <uses-permission
+34-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:27:5-29:35
+35        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+35-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:28:9-65
+36        android:required="true" />
+36-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:29:9-32
+37    <uses-permission
+37-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:30:5-32:35
+38        android:name="android.permission.READ_EXTERNAL_STORAGE"
+38-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:31:9-64
+39        android:required="true" />
+39-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:32:9-32
+40    <uses-permission
+40-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:33:5-35:35
+41        android:name="android.permission.WRITE_SETTINGS"
+41-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:34:9-57
+42        android:required="true" />
+42-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:35:9-32
+43    <!--
+44       "Allows applications to access serial ports via the SerialManager.". So, uncertain we need,
+45       as we don't use the SerialManager.
+46    -->
+47    <uses-permission
+47-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:41:5-43:35
+48        android:name="android.permission.SERIAL_PORT"
+48-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:42:9-54
+49        android:required="true" /> <!-- see AppUtil.setTimeZone() -->
+49-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:43:9-32
+50    <uses-permission
+50-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:46:5-48:35
+51        android:name="android.permission.SET_TIME_ZONE"
+51-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:47:9-56
+52        android:required="true" />
+52-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:48:9-32
+53    <!--
+54  Note: we suspect that this (android.permission.WAKE_LOCK) is no
+55  longer needed, but haven't yet found the time necessary to verify
+56  that assertion before removing it
+57    -->
+58    <uses-permission
+58-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:55:5-57:35
+59        android:name="android.permission.WAKE_LOCK"
+59-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:56:9-52
+60        android:required="true" />
+60-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:57:9-32
+61    <uses-permission android:name="android.permission.CAMERA" />
+61-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:58:5-65
+61-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:58:22-62
+62    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+62-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:59:5-81
+62-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:59:22-78
+63
+64    <uses-feature android:name="android.hardware.usb.accessory" />
+64-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:61:5-67
+64-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:61:19-64
+65    <uses-feature android:glEsVersion="0x00020000" />
+65-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:62:5-54
+65-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:62:19-51
+66    <!--
+67        NOTE: Any application that requests the CAMERA permission but does not
+68        declare any camera features with the <uses-feature> element will be
+69        assumed to use all camera features (auto-focus and flash). Thus, the
+70        application will not be compatible with devices that do not support
+71        all camera features. We use <uses-feature> to declare only the
+72        camera features that our application does need. For instance, if you
+73        request the CAMERA permission, but you do not need auto-focus or
+74        flash, then declare only the android.hardware.camera feature. The
+75        other camera features that you do not request will no longer be
+76        assumed as required.
+77    -->
+78    <uses-feature android:name="android.hardware.camera" />
+78-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:76:5-60
+78-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:76:19-57
+79
+80    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+81    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+81-->[:Inspection-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/74bf6424d5d83938d57aca21148afdac/Inspection-release/AndroidManifest.xml:12:5-74
+81-->[:Inspection-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/74bf6424d5d83938d57aca21148afdac/Inspection-release/AndroidManifest.xml:12:22-71
+82
+83    <application
+83-->/Users/jai/Desktop/Programming_2020-master/TeamCode/src/main/AndroidManifest.xml:11:5-19
+84        android:name="org.firstinspires.ftc.robotcore.internal.system.RobotApplication"
+84-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:78:18-97
+85        android:allowBackup="true"
+85-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:9-35
+86        android:debuggable="true"
+87        android:icon="@drawable/ic_launcher"
+87-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:9-45
+88        android:label="@string/app_name"
+88-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:9-41
+89        android:largeHeap="true"
+89-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:9-33
+90        android:theme="@style/AppThemeRedRC" > <!-- The main robot controller activity -->
+90-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:9-45
+91        <activity
+91-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:22:9-43:20
+92            android:name="org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity"
+92-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:23:13-101
+93            android:configChanges="orientation|screenSize"
+93-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:24:13-59
+94            android:label="@string/app_name"
+94-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:13-45
+95            android:launchMode="singleTask"
+95-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-44
+96            android:screenOrientation="fullUser" >
+96-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:13-49
+97            <intent-filter>
+97-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:28:13-32:29
+98                <category android:name="android.intent.category.LAUNCHER" />
+98-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:17-77
+98-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:27-74
+99
+100                <action android:name="android.intent.action.MAIN" />
+100-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:31:17-69
+100-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:31:25-66
+101            </intent-filter>
+102            <intent-filter>
+102-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:33:13-35:29
+103                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+103-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:34:17-90
+103-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:34:25-87
+104            </intent-filter>
+105
+106            <meta-data
+106-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:37:13-39:57
+107                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+107-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:38:17-79
+108                android:resource="@xml/device_filter" />
+108-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:39:17-54
+109            <meta-data
+109-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:40:13-42:40
+110                android:name="org.firstinspires.main.entry"
+110-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:41:17-60
+111                android:value="true" />
+111-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:42:17-37
+112        </activity> <!-- The robot controller service in which most of the robot functionality is managed -->
+113        <service
+113-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:46:9-48:38
+114            android:name="com.qualcomm.ftccommon.FtcRobotControllerService"
+114-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:47:13-76
+115            android:enabled="true" /> <!-- Service that keeps desktop folders up to date with respect to actual phone file system contents -->
+115-->[:FtcRobotController] /Users/jai/Desktop/Programming_2020-master/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:48:13-35
+116        <service
+116-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:81:9-83:38
+117            android:name="org.firstinspires.ftc.robotcore.internal.files.MediaTransferProtocolMonitorService"
+117-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:82:13-110
+118            android:enabled="true" />
+118-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:83:13-35
+119
+120        <meta-data
+120-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:85:9-87:41
+121            android:name="autoStartService.org.firstinspires.ftc.robotcore.internal.files.MediaTransferProtocolMonitorService"
+121-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:86:13-127
+122            android:value="BOTH|1000" /> <!-- Service that provides build services for OnBotJava -->
+122-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:87:13-38
+123        <service
+123-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:90:9-92:38
+124            android:name="org.firstinspires.ftc.robotcore.internal.opmode.OnBotJavaService"
+124-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:91:13-92
+125            android:enabled="true" />
+125-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:92:13-35
+126
+127        <meta-data
+127-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:94:9-96:39
+128            android:name="autoStartService.org.firstinspires.ftc.robotcore.internal.opmode.OnBotJavaService"
+128-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:95:13-109
+129            android:value="RC|2000" />
+129-->[:RobotCore-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/AndroidManifest.xml:96:13-36
+130
+131        <activity
+131-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:26:9-30:20
+132            android:name="com.qualcomm.ftccommon.FtcRobotControllerSettingsActivity"
+132-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:27:13-85
+133            android:exported="true"
+133-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:28:13-36
+134            android:label="@string/settings_activity" >
+134-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:29:13-54
+135        </activity>
+136        <activity
+136-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:31:9-36:20
+137            android:name="com.qualcomm.ftccommon.configuration.FtcLoadFileActivity"
+137-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:32:13-84
+138            android:configChanges="orientation|screenSize"
+138-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:33:13-59
+139            android:exported="true"
+139-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:34:13-36
+140            android:label="@string/configure_activity" >
+140-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:35:13-55
+141        </activity>
+142        <activity
+142-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:37:9-42:20
+143            android:name="com.qualcomm.ftccommon.configuration.ConfigureFromTemplateActivity"
+143-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:38:13-94
+144            android:configChanges="orientation|screenSize"
+144-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:39:13-59
+145            android:exported="true"
+145-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:40:13-36
+146            android:label="@string/title_activity_configfromtemplate" >
+146-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:41:13-70
+147        </activity>
+148        <activity
+148-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:43:9-48:20
+149            android:name="com.qualcomm.ftccommon.ViewLogsActivity"
+149-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:44:13-67
+150            android:configChanges="orientation|screenSize"
+150-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:45:13-59
+151            android:exported="true"
+151-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:46:13-36
+152            android:label="@string/view_logs_activity" >
+152-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:47:13-55
+153        </activity>
+154        <activity
+154-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:49:9-53:20
+155            android:name="com.qualcomm.ftccommon.configuration.FtcConfigurationActivity"
+155-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:50:13-89
+156            android:configChanges="orientation|screenSize"
+156-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:51:13-59
+157            android:label="@string/app_name" >
+157-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:52:13-45
+158        </activity>
+159        <activity
+159-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:54:9-58:20
+160            android:name="com.qualcomm.ftccommon.configuration.FtcNewFileActivity"
+160-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:55:13-83
+161            android:configChanges="orientation|screenSize"
+161-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:56:13-59
+162            android:label="@string/app_name" >
+162-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:57:13-45
+163        </activity>
+164        <activity
+164-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:59:9-62:73
+165            android:name="com.qualcomm.ftccommon.ConfigWifiDirectActivity"
+165-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:60:13-75
+166            android:exported="true"
+166-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:61:13-36
+167            android:label="@string/title_activity_config_wifi_direct" />
+167-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:62:13-70
+168        <activity
+168-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:63:9-67:20
+169            android:name="com.qualcomm.ftccommon.FtcAdvancedRCSettingsActivity"
+169-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:64:13-80
+170            android:exported="true"
+170-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:65:13-36
+171            android:label="@string/titleAdvancedRCSettings" >
+171-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:66:13-60
+172        </activity>
+173        <activity
+173-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:68:9-71:20
+174            android:name="com.qualcomm.ftccommon.FtcLynxFirmwareUpdateActivity"
+174-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:69:13-80
+175            android:exported="true" >
+175-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:70:13-36
+176        </activity>
+177        <activity
+177-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:72:9-75:20
+178            android:name="com.qualcomm.ftccommon.FtcLynxModuleAddressUpdateActivity"
+178-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:73:13-85
+179            android:exported="true" >
+179-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:74:13-36
+180        </activity>
+181        <activity
+181-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:76:9-80:20
+182            android:name="com.qualcomm.ftccommon.FtcWifiDirectChannelSelectorActivity"
+182-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:77:13-87
+183            android:exported="true"
+183-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:78:13-36
+184            android:label="@string/title_activity_wifi_channel_selector" >
+184-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:79:13-73
+185        </activity>
+186        <activity
+186-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:81:9-85:20
+187            android:name="com.qualcomm.ftccommon.FtcWifiDirectRememberedGroupsActivity"
+187-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:82:13-88
+188            android:exported="true"
+188-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:83:13-36
+189            android:label="@string/title_activity_wifi_remembered_groups_editor" >
+189-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:84:13-81
+190        </activity>
+191        <activity
+191-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:86:9-89:20
+192            android:name="com.qualcomm.ftccommon.AboutActivity"
+192-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:87:13-64
+193            android:label="@string/about_activity" >
+193-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:88:13-51
+194        </activity>
+195        <activity
+195-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:90:9-93:20
+196            android:name="com.qualcomm.ftccommon.FtcAboutActivity"
+196-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:91:13-67
+197            android:label="@string/ftc_about_activity" >
+197-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:92:13-55
+198        </activity>
+199        <activity
+199-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:94:9-99:20
+200            android:name="com.qualcomm.ftccommon.configuration.EditSwapUsbDevices"
+200-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:95:13-83
+201            android:configChanges="orientation|screenSize"
+201-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:96:13-59
+202            android:label="@string/edit_swap_devices_activity"
+202-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:97:13-63
+203            android:windowSoftInputMode="stateHidden" >
+203-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:98:13-54
+204        </activity>
+205        <activity
+205-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:100:9-105:20
+206            android:name="com.qualcomm.ftccommon.configuration.EditMotorControllerActivity"
+206-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:101:13-92
+207            android:configChanges="orientation|screenSize"
+207-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:102:13-59
+208            android:label="@string/edit_motor_controller_activity"
+208-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:103:13-67
+209            android:windowSoftInputMode="stateHidden" >
+209-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:104:13-54
+210        </activity>
+211        <activity
+211-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:106:9-111:20
+212            android:name="com.qualcomm.ftccommon.configuration.EditLegacyMotorControllerActivity"
+212-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:107:13-98
+213            android:configChanges="orientation|screenSize"
+213-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:108:13-59
+214            android:label="@string/edit_motor_controller_activity"
+214-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:109:13-67
+215            android:windowSoftInputMode="stateHidden" >
+215-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:110:13-54
+216        </activity>
+217        <activity
+217-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:112:9-117:20
+218            android:name="com.qualcomm.ftccommon.configuration.EditMotorListActivity"
+218-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:113:13-86
+219            android:configChanges="orientation|screenSize"
+219-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:114:13-59
+220            android:label="@string/edit_motor_controller_activity"
+220-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:115:13-67
+221            android:windowSoftInputMode="stateHidden" >
+221-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:116:13-54
+222        </activity>
+223        <activity
+223-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:118:9-123:20
+224            android:name="com.qualcomm.ftccommon.configuration.EditServoControllerActivity"
+224-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:119:13-92
+225            android:configChanges="orientation|screenSize"
+225-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:120:13-59
+226            android:label="@string/edit_servo_controller_activity"
+226-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:121:13-67
+227            android:windowSoftInputMode="stateHidden|adjustResize" >
+227-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:122:13-67
+228        </activity>
+229        <activity
+229-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:124:9-129:20
+230            android:name="com.qualcomm.ftccommon.configuration.EditLegacyServoControllerActivity"
+230-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:125:13-98
+231            android:configChanges="orientation|screenSize"
+231-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:126:13-59
+232            android:label="@string/edit_servo_controller_activity"
+232-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:127:13-67
+233            android:windowSoftInputMode="stateHidden|adjustResize" >
+233-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:128:13-67
+234        </activity>
+235        <activity
+235-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:130:9-135:20
+236            android:name="com.qualcomm.ftccommon.configuration.EditServoListActivity"
+236-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:131:13-86
+237            android:configChanges="orientation|screenSize"
+237-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:132:13-59
+238            android:label="@string/edit_servo_controller_activity"
+238-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:133:13-67
+239            android:windowSoftInputMode="stateHidden|adjustResize" >
+239-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:134:13-67
+240        </activity>
+241        <activity
+241-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:136:9-141:20
+242            android:name="com.qualcomm.ftccommon.configuration.EditLegacyModuleControllerActivity"
+242-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:137:13-99
+243            android:configChanges="orientation|screenSize"
+243-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:138:13-59
+244            android:label="@string/edit_legacy_module_controller_activity"
+244-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:139:13-75
+245            android:windowSoftInputMode="stateHidden|adjustResize" >
+245-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:140:13-67
+246        </activity>
+247        <activity
+247-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:142:9-147:20
+248            android:name="com.qualcomm.ftccommon.configuration.EditMatrixControllerActivity"
+248-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:143:13-93
+249            android:configChanges="orientation|screenSize"
+249-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:144:13-59
+250            android:label="@string/edit_matrix_controller_activity"
+250-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:145:13-68
+251            android:windowSoftInputMode="stateHidden|adjustResize" >
+251-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:146:13-67
+252        </activity>
+253        <activity
+253-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:148:9-153:20
+254            android:name="com.qualcomm.ftccommon.configuration.EditDeviceInterfaceModuleActivity"
+254-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:149:13-98
+255            android:configChanges="orientation|screenSize"
+255-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:150:13-59
+256            android:label="@string/edit_core_device_interface_module_controller_activity"
+256-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:151:13-90
+257            android:windowSoftInputMode="stateHidden|adjustResize" >
+257-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:152:13-67
+258        </activity>
+259        <activity
+259-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:154:9-159:20
+260            android:name="com.qualcomm.ftccommon.configuration.EditLynxModuleActivity"
+260-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:155:13-87
+261            android:configChanges="orientation|screenSize"
+261-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:156:13-59
+262            android:label="@string/edit_lynx_module_controller_activity"
+262-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:157:13-73
+263            android:windowSoftInputMode="stateHidden|adjustResize" >
+263-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:158:13-67
+264        </activity>
+265        <activity
+265-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:160:9-165:20
+266            android:name="com.qualcomm.ftccommon.configuration.EditLynxUsbDeviceActivity"
+266-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:161:13-90
+267            android:configChanges="orientation|screenSize"
+267-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:162:13-59
+268            android:label="@string/edit_lynx_usb_device_activity"
+268-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:163:13-66
+269            android:windowSoftInputMode="stateHidden|adjustResize" >
+269-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:164:13-67
+270        </activity>
+271        <activity
+271-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:166:9-171:20
+272            android:name="com.qualcomm.ftccommon.configuration.EditWebcamActivity"
+272-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:167:13-83
+273            android:configChanges="orientation|screenSize"
+273-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:168:13-59
+274            android:label="@string/edit_webcam_activity"
+274-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:169:13-57
+275            android:windowSoftInputMode="stateHidden|adjustResize" >
+275-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:170:13-67
+276        </activity>
+277        <activity
+277-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:172:9-177:20
+278            android:name="com.qualcomm.ftccommon.configuration.EditPWMDevicesActivity"
+278-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:173:13-87
+279            android:configChanges="orientation|screenSize"
+279-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:174:13-59
+280            android:label="@string/edit_pwm_devices_activity"
+280-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:175:13-62
+281            android:windowSoftInputMode="stateHidden|adjustResize" >
+281-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:176:13-67
+282        </activity>
+283        <activity
+283-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:178:9-183:20
+284            android:name="com.qualcomm.ftccommon.configuration.EditAnalogInputDevicesActivity"
+284-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:179:13-95
+285            android:configChanges="orientation|screenSize"
+285-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:180:13-59
+286            android:label="@string/edit_analog_input_devices_activity"
+286-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:181:13-71
+287            android:windowSoftInputMode="stateHidden|adjustResize" >
+287-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:182:13-67
+288        </activity>
+289        <activity
+289-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:184:9-189:20
+290            android:name="com.qualcomm.ftccommon.configuration.EditDigitalDevicesActivity"
+290-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:185:13-91
+291            android:configChanges="orientation|screenSize"
+291-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:186:13-59
+292            android:label="@string/edit_digital_devices_activity"
+292-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:187:13-66
+293            android:windowSoftInputMode="stateHidden|adjustResize" >
+293-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:188:13-67
+294        </activity>
+295        <activity
+295-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:190:9-195:20
+296            android:name="com.qualcomm.ftccommon.configuration.EditDigitalDevicesActivityLynx"
+296-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:191:13-95
+297            android:configChanges="orientation|screenSize"
+297-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:192:13-59
+298            android:label="@string/edit_digital_devices_activity_lynx"
+298-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:193:13-71
+299            android:windowSoftInputMode="stateHidden|adjustResize" >
+299-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:194:13-67
+300        </activity>
+301        <activity
+301-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:196:9-201:20
+302            android:name="com.qualcomm.ftccommon.configuration.EditI2cDevicesActivity"
+302-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:197:13-87
+303            android:configChanges="orientation|screenSize"
+303-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:198:13-59
+304            android:label="@string/edit_i2c_devices_activity"
+304-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:199:13-62
+305            android:windowSoftInputMode="stateHidden|adjustResize" >
+305-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:200:13-67
+306        </activity>
+307        <activity
+307-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:202:9-207:20
+308            android:name="com.qualcomm.ftccommon.configuration.EditI2cDevicesActivityLynx"
+308-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:203:13-91
+309            android:configChanges="orientation|screenSize"
+309-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:204:13-59
+310            android:label="@string/edit_i2c_devices_activity"
+310-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:205:13-62
+311            android:windowSoftInputMode="stateHidden|adjustResize" >
+311-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:206:13-67
+312        </activity>
+313        <activity
+313-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:208:9-213:20
+314            android:name="com.qualcomm.ftccommon.configuration.EditAnalogOutputDevicesActivity"
+314-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:209:13-96
+315            android:configChanges="orientation|screenSize"
+315-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:210:13-59
+316            android:label="@string/edit_analog_output_devices_activity"
+316-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:211:13-72
+317            android:windowSoftInputMode="stateHidden|adjustResize" >
+317-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:212:13-67
+318        </activity> <!-- Assistant that autostarts the robot controller on android boot (if it's supposed to) -->
+319        <receiver
+319-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:216:9-227:20
+320            android:name="org.firstinspires.ftc.ftccommon.internal.RunOnBoot"
+320-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:217:13-78
+321            android:enabled="true"
+321-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:218:13-35
+322            android:exported="true"
+322-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:219:13-36
+323            android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
+323-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:220:13-75
+324            <intent-filter>
+324-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:221:13-226:29
+325                <category android:name="android.intent.category.DEFAULT" />
+325-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:222:17-76
+325-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:222:27-73
+326
+327                <action android:name="android.intent.action.BOOT_COMPLETED" />
+327-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:224:17-79
+327-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:224:25-76
+328                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+328-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:225:17-82
+328-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:225:25-79
+329            </intent-filter>
+330        </receiver> <!-- A service that will auto-restart the robot controller if it crashes (if it's supposed to) -->
+331        <service
+331-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:230:9-232:38
+332            android:name="org.firstinspires.ftc.ftccommon.internal.FtcRobotControllerWatchdogService"
+332-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:231:13-102
+333            android:enabled="true" />
+333-->[:FtcCommon-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/4c8620047f412c7f480c4cdd99045375/FtcCommon-release/AndroidManifest.xml:232:13-35
+334
+335        <activity
+335-->[:Inspection-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/74bf6424d5d83938d57aca21148afdac/Inspection-release/AndroidManifest.xml:20:9-24:20
+336            android:name="org.firstinspires.inspection.DsInspectionActivity"
+336-->[:Inspection-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/74bf6424d5d83938d57aca21148afdac/Inspection-release/AndroidManifest.xml:21:13-77
+337            android:configChanges="orientation|screenSize"
+337-->[:Inspection-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/74bf6424d5d83938d57aca21148afdac/Inspection-release/AndroidManifest.xml:22:13-59
+338            android:label="@string/inspection_activity" >
+338-->[:Inspection-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/74bf6424d5d83938d57aca21148afdac/Inspection-release/AndroidManifest.xml:23:13-56
+339        </activity>
+340        <activity
+340-->[:Inspection-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/74bf6424d5d83938d57aca21148afdac/Inspection-release/AndroidManifest.xml:25:9-29:20
+341            android:name="org.firstinspires.inspection.RcInspectionActivity"
+341-->[:Inspection-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/74bf6424d5d83938d57aca21148afdac/Inspection-release/AndroidManifest.xml:26:13-77
+342            android:configChanges="orientation|screenSize"
+342-->[:Inspection-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/74bf6424d5d83938d57aca21148afdac/Inspection-release/AndroidManifest.xml:27:13-59
+343            android:label="@string/inspection_activity" >
+343-->[:Inspection-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/74bf6424d5d83938d57aca21148afdac/Inspection-release/AndroidManifest.xml:28:13-56
+344        </activity>
+345        <activity
+345-->[:Blocks-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/6d1395f6d1192963e4c7efe2575e27a0/Blocks-release/AndroidManifest.xml:19:9-23:20
+346            android:name="com.google.blocks.ftcrobotcontroller.ProgrammingModeActivity"
+346-->[:Blocks-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/6d1395f6d1192963e4c7efe2575e27a0/Blocks-release/AndroidManifest.xml:20:13-88
+347            android:configChanges="orientation|screenSize"
+347-->[:Blocks-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/6d1395f6d1192963e4c7efe2575e27a0/Blocks-release/AndroidManifest.xml:21:13-59
+348            android:label="@string/programming_mode_activity" >
+348-->[:Blocks-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/6d1395f6d1192963e4c7efe2575e27a0/Blocks-release/AndroidManifest.xml:22:13-62
+349        </activity>
+350        <activity
+350-->[:Blocks-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/6d1395f6d1192963e4c7efe2575e27a0/Blocks-release/AndroidManifest.xml:24:9-28:20
+351            android:name="org.firstinspires.ftc.ftccommon.internal.ProgramAndManageActivity"
+351-->[:Blocks-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/6d1395f6d1192963e4c7efe2575e27a0/Blocks-release/AndroidManifest.xml:25:13-93
+352            android:configChanges="orientation|screenSize"
+352-->[:Blocks-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/6d1395f6d1192963e4c7efe2575e27a0/Blocks-release/AndroidManifest.xml:26:13-59
+353            android:label="@string/program_and_manage_activity" >
+353-->[:Blocks-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/6d1395f6d1192963e4c7efe2575e27a0/Blocks-release/AndroidManifest.xml:27:13-64
+354        </activity>
+355        <activity
+355-->[:Blocks-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/6d1395f6d1192963e4c7efe2575e27a0/Blocks-release/AndroidManifest.xml:29:9-33:20
+356            android:name="com.google.blocks.ftcdriverstation.RemoteProgrammingModeActivity"
+356-->[:Blocks-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/6d1395f6d1192963e4c7efe2575e27a0/Blocks-release/AndroidManifest.xml:30:13-92
+357            android:configChanges="orientation|screenSize"
+357-->[:Blocks-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/6d1395f6d1192963e4c7efe2575e27a0/Blocks-release/AndroidManifest.xml:31:13-59
+358            android:label="@string/programming_mode_activity" >
+358-->[:Blocks-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/6d1395f6d1192963e4c7efe2575e27a0/Blocks-release/AndroidManifest.xml:32:13-62
+359        </activity>
+360        <activity
+360-->[:Blocks-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/6d1395f6d1192963e4c7efe2575e27a0/Blocks-release/AndroidManifest.xml:34:9-38:20
+361            android:name="com.google.blocks.ftcrobotcontroller.BlocksActivity"
+361-->[:Blocks-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/6d1395f6d1192963e4c7efe2575e27a0/Blocks-release/AndroidManifest.xml:35:13-79
+362            android:configChanges="orientation|screenSize"
+362-->[:Blocks-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/6d1395f6d1192963e4c7efe2575e27a0/Blocks-release/AndroidManifest.xml:36:13-59
+363            android:label="@string/blocks_activity" >
+363-->[:Blocks-release:] /Users/jai/.gradle/caches/transforms-2/files-2.1/6d1395f6d1192963e4c7efe2575e27a0/Blocks-release/AndroidManifest.xml:37:13-52
+364        </activity>
+365    </application>
+366
+367</manifest>
