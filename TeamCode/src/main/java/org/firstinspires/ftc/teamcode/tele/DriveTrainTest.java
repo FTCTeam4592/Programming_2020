@@ -1,9 +1,13 @@
 package org.firstinspires.ftc.teamcode.tele;
 
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.RoverRuckus4592;
+
+
+@TeleOp(name = "DRIVETRAINTEST")
 
 public class DriveTrainTest extends RoverRuckus4592 {
 
@@ -19,7 +23,17 @@ public class DriveTrainTest extends RoverRuckus4592 {
         rightFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightRear.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
+        liftSlide.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        flipArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
         while (opModeIsActive()) {
+
+            double leftyPower;
+            double rightyPower;
+
+            double liftPower;
+
+            int flipOutDist = 75;
 
             double leftFront_Power = Range.clip(gamepad1.left_stick_x, -1, 1);
             double rightFront_Power = Range.clip(leftFront_Power, -1, 1);
@@ -52,24 +66,81 @@ public class DriveTrainTest extends RoverRuckus4592 {
 
             int current;
 
-            if(Math.abs(gamepad1.left_stick_x * gamepad1.left_stick_y)>0 && ((gamepad1.right_stick_x+gamepad1.right_stick_y)==0)) {
-                //strafe
-                drive(leftFront_Power, rightFront_Power, leftRear_Power, rightRear_Power);
+            if(gamepad1.right_stick_x==0 && gamepad1.right_stick_y==0) {
+                float movex = gamepad1.left_stick_y;
+                float movey = gamepad1.left_stick_x;
+
+
+                // roll: right_stick_x ranges from -1 to 1, where -1 is full counterclockwise, and
+                // 1 is full clockwise
+
+                float roll = gamepad1.left_trigger;
+                float rolr = gamepad1.right_trigger;
+
+                // clip the right/left values so that the values never exceed +/- 1
+                movex = Range.clip(movex, -1, 1);
+                movey = Range.clip(movey, -1, 1);
+                roll = Range.clip((roll * 2), -1, 1);
+                rolr = Range.clip((rolr * 2), -1, 1);
+
+                // scale the joystick value to make it easier to control
+                // the robot more precisely at slower speeds.
+                movex = (float) scaleInput(movex);
+                movey = (float) scaleInput(movey);
+                roll = (float) scaleInput(roll);
+                rolr = (float) scaleInput(rolr);
+
+                // write the values to the motors
+                leftFront.setPower(Range.clip(-movex + movey + roll - rolr, -1, 1));
+                leftRear.setPower(Range.clip(movex - movey + roll - rolr, -1, 1));
+                rightFront.setPower(Range.clip(-movex - movey - roll + rolr, -1, 1));
+                rightRear.setPower(Range.clip(movex + movey - roll + rolr, -1, 1));
             }
-            else {
-                //drive
-                drive(-frontLeft, frontRight, -rearLeft, rearRight);
+            else{
+                tele();
+                leftyPower = gamepad1.right_stick_y;
+                rightyPower = gamepad1.right_stick_y;
+                arcade(leftyPower,rightyPower);
             }
 
-            if(gamepad1.right_bumper){
-                strafeRight(1, 15);
+
+            if(gamepad1.x){
+                liftPower = 0.5;
+            } else if (gamepad1.b){
+                liftPower = -0.5;
+            } else{
+                liftPower = 0;
             }
-            if(gamepad1.left_bumper) {
-                driveReverse(1, 10);
+
+            if(gamepad1.y && flipArm.getCurrentPosition()<=4){
+                flipArm.setTargetPosition(flipOutDist);
+                flipArm.setPower(0.3);
+                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
+            if(gamepad1.a && flipArm.getCurrentPosition()>=5){
+                flipArm.setTargetPosition(0);
+                flipArm.setPower(0.2);
+                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            }
+
+            liftSlide.setPower(liftPower);
+
+            telemetry.addData("flipArm", flipArm.getCurrentPosition());
+
 
             telemetry.update();
         }
+
+
+
+    }
+
+    private void arcade(double left, double right){
+
+        leftFront.setPower(left);
+        leftRear.setPower(left);
+        rightFront.setPower(right);
+        rightRear.setPower(right);
 
     }
 
