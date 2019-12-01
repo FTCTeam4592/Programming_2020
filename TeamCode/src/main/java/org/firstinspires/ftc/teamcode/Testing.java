@@ -71,7 +71,7 @@ public class Testing extends RoverRuckus4592 {
 
             if(gamepad1.right_stick_x==0 && gamepad1.right_stick_y==0) {
                 float movex = gamepad1.left_stick_y;
-                float movey = gamepad1.left_stick_x;
+                float movey = -1 * gamepad1.left_stick_x;
 
 
                 // roll: right_stick_x ranges from -1 to 1, where -1 is full counterclockwise, and
@@ -107,44 +107,49 @@ public class Testing extends RoverRuckus4592 {
             }
 
 
-            if(gamepad1.x){
-                liftPower = 0.5;
+            if(gamepad1.y){
+                liftSlide.setPower(0.5);
             } else if (gamepad1.b){
-                liftPower = -0.5;
+                liftSlide.setPower(-0.5);
             } else{
-                liftPower = 0;
+                liftSlide.setPower(0);
             }
 
-
-            liftSlide.setPower(liftPower);
-
-            if(gamepad1.a){
-                flipPos = 0.55;
+            if(gamepad1.a && flipArm.getPosition()<0.4){
+                flipArm.setPosition(0.75);
+                //flipPos = 0.7;
             }
-            else{
-                flipPos = -1;
+            else if (gamepad1.a && flipArm.getPosition()>0.4){
+                flipArm.setPosition(0);
+                //flipPos = 0;
             }
 
-            flipArm.setPosition(flipPos);
+            //flipArm.setPosition(flipPos);
 
 
             if (gamepad1.dpad_right) {
-                rotPos = 0.5;
+                rotateClaw.setPosition(0.5);
+                //rotPos = 0.5;
+            }
+            else {
+                rotateClaw.setPosition(0);
             }
 
-            rotateClaw.setPosition(rotPos);
+            //rotateClaw.setPosition(rotPos);
 
-            if(gamepad1.y){
-                clawPos = 1;
+            if(gamepad1.x){
+                clampClaw.setPosition(1);
+                //clawPos = 1;
             }
             else{
-                clawPos = 0.2;
+                clampClaw.setPosition(0.2);
+                //clawPos = 0.2;
             }
 
-            clampClaw.setPosition(clawPos);
+            //clampClaw.setPosition(clawPos);
 
             if(gamepad1.right_bumper){
-                platformClamp.setPosition(1);
+                platformClamp.setPosition(0.8);
             }
             else{
                 platformClamp.setPosition(0.2);
