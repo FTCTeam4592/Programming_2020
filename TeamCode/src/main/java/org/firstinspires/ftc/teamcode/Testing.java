@@ -1,15 +1,15 @@
-package org.firstinspires.ftc.teamcode.tele;
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import org.firstinspires.ftc.teamcode.RoverRuckus4592;
+import org.firstinspires.ftc.teamcode.SkyStone4592;
 
 
-@TeleOp(name = "TESTING")
+@TeleOp(name = "BEEP BOOP")
 
-public class Testing extends RoverRuckus4592 {
+public class Testing extends SkyStone4592 {
 
     @Override
     public void runOpMode() throws InterruptedException {

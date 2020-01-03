@@ -4,12 +4,12 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import org.firstinspires.ftc.teamcode.RoverRuckus4592;
+import org.firstinspires.ftc.teamcode.SkyStone4592;
 
 
 @TeleOp(name = "DRIVETRAINTEST")
 
-public class DriveTrainTest extends RoverRuckus4592 {
+public class DriveTrainTest extends SkyStone4592 {
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -24,7 +24,6 @@ public class DriveTrainTest extends RoverRuckus4592 {
         rightRear.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         liftSlide.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        flipArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         while (opModeIsActive()) {
 
@@ -112,20 +111,20 @@ public class DriveTrainTest extends RoverRuckus4592 {
                 liftPower = 0;
             }
 
-            if(gamepad1.y && flipArm.getCurrentPosition()<=4){
-                flipArm.setTargetPosition(flipOutDist);
-                flipArm.setPower(0.3);
-                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            }
-            if(gamepad1.a && flipArm.getCurrentPosition()>=5){
-                flipArm.setTargetPosition(0);
-                flipArm.setPower(0.2);
-                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            }
+//            if(gamepad1.y && flipArm.getCurrentPosition()<=4){
+//                flipArm.setTargetPosition(flipOutDist);
+//                flipArm.setPower(0.3);
+//                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//            }
+//            if(gamepad1.a && flipArm.getCurrentPosition()>=5){
+//                flipArm.setTargetPosition(0);
+//                flipArm.setPower(0.2);
+//                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//            }
 
             liftSlide.setPower(liftPower);
 
-            telemetry.addData("flipArm", flipArm.getCurrentPosition());
+//            telemetry.addData("flipArm", flipArm.getCurrentPosition());
 
 
             telemetry.update();

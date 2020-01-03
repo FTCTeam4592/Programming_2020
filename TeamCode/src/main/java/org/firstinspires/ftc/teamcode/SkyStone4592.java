@@ -13,9 +13,10 @@ import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.robotcontroller.external.samples.SensorREV2mDistance;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-public abstract class RoverRuckus4592 extends LinearOpMode {
+public abstract class SkyStone4592 extends LinearOpMode {
 
-    public DcMotor leftFront, rightFront, leftRear, rightRear, liftSlide, flipArm;
+    public DcMotor leftFront, rightFront, leftRear, rightRear, liftSlide;
+    public Servo flipArm, clampClaw, rotateClaw, platformClamp;
 
     static final double     COUNTS_PER_MOTOR_REV    = 1120.0 ;    // eg: AndyMark NeverRest40 Motor Encoder
     static final double     DRIVE_GEAR_REDUCTION    = .5 ;     // This is < 1.0 if geared UP
@@ -44,14 +45,10 @@ public abstract class RoverRuckus4592 extends LinearOpMode {
         rightRear = hardwareMap.dcMotor.get("rightRear");
 
         liftSlide = hardwareMap.dcMotor.get("liftSlide");
-        flipArm = hardwareMap.dcMotor.get("flipArm");
+
 
         liftSlide.setDirection(DcMotorSimple.Direction.FORWARD);
-        liftSlide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-        flipArm.setDirection(DcMotorSimple.Direction.FORWARD);
-        flipArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
+        liftSlide.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         leftFront.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         rightFront.setDirection(DcMotor.Direction.REVERSE);
@@ -75,8 +72,12 @@ public abstract class RoverRuckus4592 extends LinearOpMode {
         leftRear.setPower(0);
         rightRear.setPower(0);
 
-        liftSlide.setPower(0);
+        //liftSlide.setPower(0);
 
+        flipArm = hardwareMap.servo.get("flipArm");
+        rotateClaw = hardwareMap.servo.get("rotateClaw");
+        clampClaw = hardwareMap.servo.get("clampClaw");
+        platformClamp = hardwareMap.servo.get("platformClamp");
 
         fDS = hardwareMap.get(DistanceSensor.class, "frontDistanceSensor");
     }
@@ -112,6 +113,243 @@ public abstract class RoverRuckus4592 extends LinearOpMode {
         rightRear.setPower(0);
 
         fDS = hardwareMap.get(DistanceSensor.class, "frontDistanceSensor");
+
+    }
+
+    public void autoRedLeft(){
+        leftFront = hardwareMap.dcMotor.get("leftFront");
+        rightFront = hardwareMap.dcMotor.get("rightFront");
+        leftRear = hardwareMap.dcMotor.get("leftRear");
+        rightRear = hardwareMap.dcMotor.get("rightRear");
+
+        platformClamp = hardwareMap.servo.get("platformClamp");
+
+        leftFront.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
+        rightFront.setDirection(DcMotor.Direction.FORWARD);
+        leftRear.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
+        rightRear.setDirection(DcMotor.Direction.FORWARD);
+
+        leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        // Set all motors to zero power
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftRear.setPower(0);
+        rightRear.setPower(0);
+
+        //strafeLeft(0.6, 3);
+
+//        //FIRST STEP
+//        leftFront.setPower(-1);
+//        rightFront.setPower(1);
+//        leftRear.setPower(0.45);
+//        rightRear.setPower(-0.45);
+//        sleep(1250);
+//        leftFront.setPower(0);
+//        rightFront.setPower(0);
+//        leftRear.setPower(0);
+//        rightRear.setPower(0);
+
+          driveForward(1, 49 );
+
+          sleep(500);
+
+          strafeLeft(0.75, 70);
+
+          sleep(500);
+
+
+          platformClamp.setPosition(0.9);
+
+          sleep(2000);
+
+
+          strafeRight(1, 100);
+
+          sleep(1000);
+
+          platformClamp.setPosition(0.2);
+
+
+          driveReverse(1, 105);
+
+
+    }
+
+    public void autoBlueLeft(){
+        leftFront = hardwareMap.dcMotor.get("leftFront");
+        rightFront = hardwareMap.dcMotor.get("rightFront");
+        leftRear = hardwareMap.dcMotor.get("leftRear");
+        rightRear = hardwareMap.dcMotor.get("rightRear");
+
+        platformClamp = hardwareMap.servo.get("platformClamp");
+
+        leftFront.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
+        rightFront.setDirection(DcMotor.Direction.FORWARD);
+        leftRear.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
+        rightRear.setDirection(DcMotor.Direction.FORWARD);
+
+        leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        // Set all motors to zero power
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftRear.setPower(0);
+        rightRear.setPower(0);
+
+        //strafeLeft(0.6, 3);
+
+//        //FIRST STEP
+//        leftFront.setPower(-1);
+//        rightFront.setPower(1);
+//        leftRear.setPower(0.45);
+//        rightRear.setPower(-0.45);
+//        sleep(1250);
+//        leftFront.setPower(0);
+//        rightFront.setPower(0);
+//        leftRear.setPower(0);
+//        rightRear.setPower(0);
+
+        driveReverse(1, 49);
+
+        sleep(500);
+
+        strafeLeft(0.75, 70);
+
+        sleep(500);
+
+
+        platformClamp.setPosition(0.9);
+
+        sleep(2000);
+
+
+        strafeRight(1, 100);
+
+        sleep(1000);
+
+        platformClamp.setPosition(0.2);
+
+
+        driveForward(1, 105);
+
+
+    }
+
+    public void autoBlueRight(){
+        leftFront = hardwareMap.dcMotor.get("leftFront");
+        rightFront = hardwareMap.dcMotor.get("rightFront");
+        leftRear = hardwareMap.dcMotor.get("leftRear");
+        rightRear = hardwareMap.dcMotor.get("rightRear");
+
+        platformClamp = hardwareMap.servo.get("platformClamp");
+
+        flipArm = hardwareMap.servo.get("flipArm");
+        clampClaw = hardwareMap.servo.get("clampClaw");
+
+        leftFront.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
+        rightFront.setDirection(DcMotor.Direction.FORWARD);
+        leftRear.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
+        rightRear.setDirection(DcMotor.Direction.FORWARD);
+
+        leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        // Set all motors to zero power
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftRear.setPower(0);
+        rightRear.setPower(0);
+
+        clampClaw.setPosition(0.3);
+
+
+    }
+
+    public void autoRedRight(){
+        leftFront = hardwareMap.dcMotor.get("leftFront");
+        rightFront = hardwareMap.dcMotor.get("rightFront");
+        leftRear = hardwareMap.dcMotor.get("leftRear");
+        rightRear = hardwareMap.dcMotor.get("rightRear");
+
+        platformClamp = hardwareMap.servo.get("platformClamp");
+
+        flipArm = hardwareMap.servo.get("flipArm");
+        clampClaw = hardwareMap.servo.get("clampClaw");
+
+        leftFront.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
+        rightFront.setDirection(DcMotor.Direction.FORWARD);
+        leftRear.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
+        rightRear.setDirection(DcMotor.Direction.FORWARD);
+
+        leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        // Set all motors to zero power
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftRear.setPower(0);
+        rightRear.setPower(0);
+
+        clampClaw.setPosition(0.3);
+
+
+        //strafeLeft(0.6, 3);
+
+//        //FIRST STEP
+//        leftFront.setPower(-1);
+//        rightFront.setPower(1);
+//        leftRear.setPower(0.45);
+//        rightRear.setPower(-0.45);
+//        sleep(1250);
+//        leftFront.setPower(0);
+//        rightFront.setPower(0);
+//        leftRear.setPower(0);
+//        rightRear.setPower(0);
+
+//        driveForward(0.75, 30);
+//        flipArm.setPosition(0.725);
+//        sleep(2000);
+//        driveForward(0.5, 12);
+//        sleep(500);
+//        clampClaw.setPosition(1);
+//        sleep(1000);
+//        turnRight(0.5, 45);
+//        driveForward(0.75, 80);
+//        clampClaw.setPosition(0);
+//        sleep(500);
+//        driveReverse(0.7, 40);
+
 
     }
 
@@ -189,16 +427,16 @@ public abstract class RoverRuckus4592 extends LinearOpMode {
         }
     }
     public void strafeLeft(double speed, double distance){
-        encoderDrive(speed, -distance, distance, -distance, distance, 3.0);
+        encoderDrive(speed, -distance, distance, distance, -distance, 3.0);
     }
     public void strafeRight(double speed, double distance){
-        encoderDrive(speed, distance, -distance, distance, -distance, 3.0);
+        encoderDrive(speed, distance, -distance, -distance, distance, 3.0);
     }
     public void driveForward(double speed, double distance){
-        encoderDrive(speed, distance, distance, distance, distance, 3.0);
+        encoderDrive(speed, distance, -distance, distance, -distance, 3.0);
     }
     public void driveReverse(double speed, double distance){
-        encoderDrive(speed, -distance, -distance, -distance, -distance, 4.0);
+        encoderDrive(speed, -distance, distance, -distance, distance, 4.0);
     }
     public void turnLeft(double speed, double distance){
         encoderDrive(speed, -distance, -distance, distance, distance, 3.0); //45 is 90 degrees
@@ -273,6 +511,13 @@ public abstract class RoverRuckus4592 extends LinearOpMode {
         }
 
         return dScale;
+    }
+
+    public void servoMove(Servo ser, double pos){
+        for(int i = 0; i<pos; i++){
+            i+=0.1;
+            ser.setPosition(i);
+        }
     }
 
 }
