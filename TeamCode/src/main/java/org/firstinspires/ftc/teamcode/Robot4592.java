@@ -425,6 +425,13 @@ public abstract class Robot4592 extends LinearOpMode {
         encoderDrive(speed, distance, distance, -distance, -distance, 3.0);
     }
 
+    public void stopRobot() {
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftRear.setPower(0);
+        rightRear.setPower(0);
+    }
+
     private void pushGold() {
         strafeLeft(0.5,MOVE_MINERAL);  //Shift the mineral
         strafeRight(0.6,MOVE_MINERAL); //Move Back
