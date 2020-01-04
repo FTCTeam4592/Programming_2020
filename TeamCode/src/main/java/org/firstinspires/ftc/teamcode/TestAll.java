@@ -1,12 +1,12 @@
 package org.firstinspires.ftc.teamcode;
 
 public class TestAll extends SkyStone4592 {
+
     public void runOpMode() throws InterruptedException {
         testDrive(5, 5);
         stopRobot();
         testArm();
         stopRobot();
-
     }
 
     public void testDrive(double speed, double dist) {
@@ -23,9 +23,9 @@ public class TestAll extends SkyStone4592 {
     }
 
     public void testArm() {
-        flipArm.setPosition(1); //idk where this flips to, hopefully nothing breaks
+        flipArm.setPower(5); //hopefully nothing breaks
         sleep(500);
-        flipArm.setPosition(0); //should flip back?
+        flipArm.setPower(-5); //hopefully flips back
         sleep(500);
 
         rotateClaw.setPosition(1); //spin the claw a bit
@@ -33,6 +33,14 @@ public class TestAll extends SkyStone4592 {
         rotateClaw.setPosition(0); //set it back
         sleep(500);
 
+        clampClaw.setPosition(0.3); //closes claw
+        sleep(500);
+        clampClaw.setPosition(0); //should open the claw?
+        sleep(500);
 
+        platformClamp.setPosition(0.9); //test the platform grabber
+        sleep(500);
+        platformClamp.setPosition(0); //put it back, hopefully
+        sleep(500);
     }
 }
