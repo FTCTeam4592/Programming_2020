@@ -15,8 +15,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 public abstract class SkyStone4592 extends LinearOpMode {
 
-    public DcMotor leftFront, rightFront, leftRear, rightRear, liftSlide;
-    public Servo flipArm, clampClaw, rotateClaw, platformClamp;
+    public DcMotor leftFront, rightFront, leftRear, rightRear, liftSlide, flipArm;
+    public Servo clampClaw, rotateClaw, platformClamp;
 
     static final double     COUNTS_PER_MOTOR_REV    = 1120.0 ;    // eg: AndyMark NeverRest40 Motor Encoder
     static final double     DRIVE_GEAR_REDUCTION    = .5 ;     // This is < 1.0 if geared UP
@@ -45,7 +45,7 @@ public abstract class SkyStone4592 extends LinearOpMode {
         rightRear = hardwareMap.dcMotor.get("rightRear");
 
         liftSlide = hardwareMap.dcMotor.get("liftSlide");
-
+        flipArm = hardwareMap.dcMotor.get("flipArm");
 
         liftSlide.setDirection(DcMotorSimple.Direction.FORWARD);
         liftSlide.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -74,7 +74,6 @@ public abstract class SkyStone4592 extends LinearOpMode {
 
         //liftSlide.setPower(0);
 
-        flipArm = hardwareMap.servo.get("flipArm");
         rotateClaw = hardwareMap.servo.get("rotateClaw");
         clampClaw = hardwareMap.servo.get("clampClaw");
         platformClamp = hardwareMap.servo.get("platformClamp");
@@ -257,10 +256,10 @@ public abstract class SkyStone4592 extends LinearOpMode {
         rightFront = hardwareMap.dcMotor.get("rightFront");
         leftRear = hardwareMap.dcMotor.get("leftRear");
         rightRear = hardwareMap.dcMotor.get("rightRear");
+        flipArm = hardwareMap.dcMotor.get("flipArm");
 
         platformClamp = hardwareMap.servo.get("platformClamp");
 
-        flipArm = hardwareMap.servo.get("flipArm");
         clampClaw = hardwareMap.servo.get("clampClaw");
 
         leftFront.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
@@ -294,10 +293,10 @@ public abstract class SkyStone4592 extends LinearOpMode {
         rightFront = hardwareMap.dcMotor.get("rightFront");
         leftRear = hardwareMap.dcMotor.get("leftRear");
         rightRear = hardwareMap.dcMotor.get("rightRear");
+        flipArm = hardwareMap.dcMotor.get("flipArm");
 
         platformClamp = hardwareMap.servo.get("platformClamp");
 
-        flipArm = hardwareMap.servo.get("flipArm");
         clampClaw = hardwareMap.servo.get("clampClaw");
 
         leftFront.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
@@ -353,7 +352,7 @@ public abstract class SkyStone4592 extends LinearOpMode {
 
     }
 
-    public void encoderDrive(double speed, double leftInches1, double leftInches2, double rightInches1,double rightInches2, double timeoutS) {
+    public void encoderDrive(double speed, double leftInches1, double leftInches2, double rightInches1,double rightInches2, double timeoutS) { //left1 is left front, left2 is left rear, right1 is right front, etc
         int new_tLeftTarget;
         int new_tRightTarget;
         int new_bLeftTarget;
@@ -439,10 +438,10 @@ public abstract class SkyStone4592 extends LinearOpMode {
         encoderDrive(speed, -distance, distance, -distance, distance, 4.0);
     }
     public void turnLeft(double speed, double distance){
-        encoderDrive(speed, -distance, -distance, distance, distance, 3.0); //45 is 90 degrees
+        encoderDrive(speed, -2 * distance, -2 * distance, 2 * distance, 2 * distance, 3.0); //90 should be 90 degrees, if it isn't, remove the "2 *"s sorry i can't test this right now, then 45 should be 90
     }
     public void turnRight(double speed, double distance){
-        encoderDrive(speed, distance, distance, -distance, -distance, 3.0);
+        encoderDrive(speed, 2 * distance, 2 * distance, -2 * distance, -2 * distance, 3.0);
     }
 
     public void triggerForward(){
