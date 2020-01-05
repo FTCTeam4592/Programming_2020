@@ -138,6 +138,8 @@ public abstract class SkyStone4592 extends LinearOpMode {
         leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+        fDS = hardwareMap.get(DistanceSensor.class, "frontDistanceSensor");
+
         // Set all motors to zero power
         leftFront.setPower(0);
         rightFront.setPower(0);
@@ -157,11 +159,16 @@ public abstract class SkyStone4592 extends LinearOpMode {
 //        leftRear.setPower(0);
 //        rightRear.setPower(0);
 
-          driveForward(1, 49 );
+//          driveForward(1, 49 );
+//
+//          sleep(500);
+//
+//          strafeLeft(0.75, 70);
 
-          sleep(500);
 
-          strafeLeft(0.75, 70);
+          while(fDS.getDistance(DistanceUnit.INCH) > 1) { //drive forward
+              driveReverse(5, 0.01);
+          })
 
           sleep(500);
 
@@ -171,14 +178,16 @@ public abstract class SkyStone4592 extends LinearOpMode {
           sleep(2000);
 
 
-          strafeRight(1, 100);
+        while(fDS.getDistance(DistanceUnit.INCH) > 1) { //drive forward
+            driveReverse(5, 0.01);
+        })
 
           sleep(1000);
 
           platformClamp.setPosition(0.2);
 
 
-          driveReverse(1, 105);
+          strafeRight(1, 105);
 
 
     }
@@ -225,11 +234,32 @@ public abstract class SkyStone4592 extends LinearOpMode {
 //        leftRear.setPower(0);
 //        rightRear.setPower(0);
 
-        driveReverse(1, 49);
+//        driveReverse(1, 49);
+//
+//        sleep(500);
+//
+//        strafeLeft(0.75, 70);
+//
+//        sleep(500);
+//
+//
+//        platformClamp.setPosition(0.9);
+//
+//        sleep(2000);
+//
+//
+//        strafeRight(1, 100);
+//
+//        sleep(1000);
+//
+//        platformClamp.setPosition(0.2);
+//
+//
+//        driveForward(1, 105);
 
-        sleep(500);
-
-        strafeLeft(0.75, 70);
+        while(fDS.getDistance(DistanceUnit.INCH) > 1) { //drive forward
+            driveReverse(5, 0.01);
+        })
 
         sleep(500);
 
@@ -239,14 +269,19 @@ public abstract class SkyStone4592 extends LinearOpMode {
         sleep(2000);
 
 
-        strafeRight(1, 100);
+        while(fDS.getDistance(DistanceUnit.INCH) > 1) { //drive forward
+            driveReverse(5, 0.01);
+        })
 
         sleep(1000);
 
         platformClamp.setPosition(0.2);
 
 
-        driveForward(1, 105);
+        strafeLeft(1, 105);
+
+
+    }
 
 
     }
