@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Desktop-Programming_2020-master.iml" filepath="$PROJECT_DIR$/Desktop-Programming_2020-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/FtcRobotController/FtcRobotController.iml" filepath="$PROJECT_DIR$/FtcRobotController/FtcRobotController.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Programming_2020.iml" filepath="$PROJECT_DIR$/Programming_2020.iml" />
       <module fileurl="file://$PROJECT_DIR$/Programming_2020-master.iml" filepath="$PROJECT_DIR$/Programming_2020-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/TeamCode/TeamCode.iml" filepath="$PROJECT_DIR$/TeamCode/TeamCode.iml" />
     </modules>

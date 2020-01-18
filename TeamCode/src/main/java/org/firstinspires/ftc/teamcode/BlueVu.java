@@ -315,8 +315,10 @@ public class BlueVu extends SkyStone4592 {
                 driveReverse(1, 5);
                 strafeLeft(1, 17.5);
                 sleep(1000);
-                flipArm.setPosition(0.725);
+                flipArm.setTargetPosition(10);
+                flipArm.setPower(0.5);
                 sleep(1000);
+                flipArm.setPower(0);
                 driveForward(1, 7.5);
                 sleep(500);
                 clampClaw.setPosition(1);

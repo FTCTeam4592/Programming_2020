@@ -257,8 +257,10 @@ public class ThirdAuto extends SkyStone4592 {
         autoBlueRight();
 
         driveForward(0.75, 30);
-        flipArm.setPosition(0.725);
+        flipArm.setTargetPosition(10);
+        flipArm.setPower(0.5);
         sleep(2000);
+        flipArm.setPower(0);
         driveForward(0.5, 12);
         sleep(500);
         clampClaw.setPosition(1);

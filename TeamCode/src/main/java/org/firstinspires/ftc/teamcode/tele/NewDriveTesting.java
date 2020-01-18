@@ -18,7 +18,6 @@ public class NewDriveTesting extends SkyStone4592 {
         tele();
         waitForStart();
 
-
         leftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftRear.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -40,8 +39,8 @@ public class NewDriveTesting extends SkyStone4592 {
             double clawPos = 0.8;
 
             double drive = Range.clip(gamepad1.left_stick_y, -1, 1);
-            double strafe = Range.clip(-gamepad1.right_stick_x, -1, 1);
-            double rotate = Range.clip(-gamepad1.left_stick_x, -1, 1);
+            double strafe = Range.clip(gamepad1.left_stick_x, -1, 1);
+            double rotate = Range.clip(gamepad1.right_stick_x, -1, 1);
 
 
             double d = (float) scaleInput(drive);
@@ -54,13 +53,17 @@ public class NewDriveTesting extends SkyStone4592 {
             rightRear.setPower(Range.clip((0.75)* (d + s - r), -1, 1));
 
 
-            if(gamepad2.a && flipArm.getPosition()<0.4){
-                flipArm.setPosition(0.67);
-                //flipPos = 0.7;
+            if(gamepad2.a && flipArm.getCurrentPosition()<400){
+                flipArm.setTargetPosition(850);
+                flipArm.setPower(0.5);
+                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
             }
-            else if (gamepad2.a && flipArm.getPosition()>0.4){
-                flipArm.setPosition(0);
-                //flipPos = 0;
+            else if (gamepad2.a && flipArm.getCurrentPosition()>4){
+                flipArm.setTargetPosition(0);
+                flipArm.setPower(0.5);
+                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
             }
 
             //flipArm.setPosition(flipPos);
@@ -70,13 +73,20 @@ public class NewDriveTesting extends SkyStone4592 {
                 rotateClaw.setPosition(0.5);
                 //rotPos = 0.5;
             }
-            else {
+            else{
                 rotateClaw.setPosition(0);
             }
 
             double lift = Range.clip(gamepad2.left_stick_y, -1, 1);
             double l = (float) scaleInput(lift);
             liftSlide.setPower(Range.clip((0.75) * l, -1, 1));
+
+            if (gamepad2.b && capFlip.getPosition()<0.3){
+                capFlip.setPosition(0.6);
+            }
+            else if (gamepad2.b && capFlip.getPosition()>0.3){
+                capFlip.setPosition(0);
+            }
 
 
 
@@ -85,24 +95,24 @@ public class NewDriveTesting extends SkyStone4592 {
             //rotateClaw.setPosition(rotPos);
 
             if(gamepad2.x){
-                clampClaw.setPosition(1);
+                clampClaw.setPosition(0.3);
                 //clawPos = 1;
             }
             else{
-                clampClaw.setPosition(0.3);
+                clampClaw.setPosition(1);
                 //clawPos = 0.2;
             }
 
             //clampClaw.setPosition(clawPos);
 
             if(gamepad2.right_bumper){
-                platformClamp.setPosition(0.9);
-            }
-            else{
                 platformClamp.setPosition(0.2);
             }
+            else{
+                platformClamp.setPosition(0.9);
+            }
 
-            telemetry.addData("flipArm", flipArm.getPosition());
+            telemetry.addData("flipArm", flipArm.getCurrentPosition());
 
             telemetry.addData("clamp", clampClaw.getPosition());
 
