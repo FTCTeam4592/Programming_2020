@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/jai/Desktop/Programming_2020-master/TeamCode/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v14/values-v14.xml",
+            "outputFile": "/Users/ansonchen/StudioProjects/Programming_2020/TeamCode/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v14/values-v14.xml",
             "map": [
                 {
-                    "source": "/Users/jai/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/res/values-v14/values-v14.xml",
+                    "source": "/Users/ansonchen/.gradle/caches/transforms-2/files-2.1/bcb5b90bf32409fe68d455e2adf91ad1/RobotCore-release/res/values-v14/values-v14.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

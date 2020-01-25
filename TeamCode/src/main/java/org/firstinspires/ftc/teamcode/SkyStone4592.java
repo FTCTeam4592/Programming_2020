@@ -16,7 +16,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 public abstract class SkyStone4592 extends LinearOpMode {
 
     public DcMotor leftFront, rightFront, leftRear, rightRear, liftSlide, flipArm;
-    public Servo clampClaw, rotateClaw, platformClamp;
+    public Servo clampClaw, rotateClaw, platformClamp, capFlip;
 
     static final double     COUNTS_PER_MOTOR_REV    = 1120.0 ;    // eg: AndyMark NeverRest40 Motor Encoder
     static final double     DRIVE_GEAR_REDUCTION    = .5 ;     // This is < 1.0 if geared UP
@@ -44,8 +44,9 @@ public abstract class SkyStone4592 extends LinearOpMode {
         leftRear = hardwareMap.dcMotor.get("leftRear");
         rightRear = hardwareMap.dcMotor.get("rightRear");
 
-        liftSlide = hardwareMap.dcMotor.get("liftSlide");
         flipArm = hardwareMap.dcMotor.get("flipArm");
+        liftSlide = hardwareMap.dcMotor.get("liftSlide");
+
 
         liftSlide.setDirection(DcMotorSimple.Direction.FORWARD);
         liftSlide.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);

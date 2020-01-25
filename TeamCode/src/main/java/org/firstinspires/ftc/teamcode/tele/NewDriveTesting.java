@@ -39,27 +39,30 @@ public class NewDriveTesting extends SkyStone4592 {
             double rotPos = 0;
             double clawPos = 0.8;
 
-            double drive = Range.clip(gamepad1.left_stick_y, -1, 1);
-            double strafe = Range.clip(-gamepad1.right_stick_x, -1, 1);
-            double rotate = Range.clip(-gamepad1.left_stick_x, -1, 1);
+            double drive = Range.clip(-gamepad1.left_stick_y, -1, 1); //bruh
+            double strafe = Range.clip(gamepad1.right_stick_x, -1, 1);
+            double rotate = Range.clip(gamepad1.left_stick_x, -1, 1);
 
 
             double d = (float) scaleInput(drive);
             double s = (float) scaleInput(strafe);
             double r = (float) scaleInput(rotate);
 
-            leftFront.setPower(Range.clip((0.75)* (d + s + r), -1, 1));
-            leftRear.setPower(Range.clip((0.75)* (d - s + r), -1, 1));
-            rightFront.setPower(Range.clip((0.75)* (d - s - r), -1, 1));
-            rightRear.setPower(Range.clip((0.75)* (d + s - r), -1, 1));
+            leftFront.setPower(Range.clip((0.75) * (d + s + r), -1, 1));
+            leftRear.setPower(Range.clip((0.75) * (d - s + r), -1, 1));
+            rightFront.setPower(Range.clip((0.75) * (d - s - r), -1, 1));
+            rightRear.setPower(Range.clip((0.75) * (d + s - r), -1, 1));
 
 
-            if(gamepad2.a && flipArm.getPosition()<0.4){
-                flipArm.setPosition(0.67);
+            if(gamepad2.a && flipArm.getTargetPosition() < 0.4){ //AAAAAAAAAAAAAAAAAAAA
+                flipArm.setTargetPosition(2); //anson don't set this to 5000 ever again please i beg you
+                flipArm.setPower(0.25);
                 //flipPos = 0.7;
             }
-            else if (gamepad2.a && flipArm.getPosition()>0.4){
-                flipArm.setPosition(0);
+            else if (gamepad2.a && flipArm.getTargetPosition() > 0.4){
+                flipArm.setTargetPosition(0);
+                //telemetry.addData("current position: ",  flipArm.getTargetPosition());
+                flipArm.setPower(-0.5);
                 //flipPos = 0;
             }
 
@@ -102,7 +105,7 @@ public class NewDriveTesting extends SkyStone4592 {
                 platformClamp.setPosition(0.2);
             }
 
-            telemetry.addData("flipArm", flipArm.getPosition());
+            telemetry.addData("flipArm", flipArm.getTargetPosition());
 
             telemetry.addData("clamp", clampClaw.getPosition());
 
