@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 #Sat Jan 11 15:16:48 EST 2020
 base.0=/Users/jai/Desktop/Programming_2020-master/TeamCode/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+=======
+#Sat Jan 25 16:48:25 EST 2020
+base.0=/Users/ansonchen/StudioProjects/Programming_2020/TeamCode/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+>>>>>>> 34cc11e3cb2d872d00ae718fa4899c4449dfe3b1
 path.0=classes.dex
 renamed.0=classes.dex

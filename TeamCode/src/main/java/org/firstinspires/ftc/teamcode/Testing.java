@@ -115,11 +115,19 @@ public class Testing extends SkyStone4592 {
                 liftSlide.setPower(0);
             }
 
+<<<<<<< HEAD
             if(gamepad1.a && flipArm.getCurrentPosition()<4){
                 flipArm.setTargetPosition(10);
                 //flipPos = 0.7;
             }
             else if (gamepad1.a && flipArm.getCurrentPosition()>4){
+=======
+            if(gamepad1.a && flipArm.getTargetPosition() < 0.4){ //AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                flipArm.setTargetPosition(1);
+                //flipPos = 0.7;
+            }
+            else if (gamepad1.a && flipArm.getTargetPosition() > 0.4){
+>>>>>>> 34cc11e3cb2d872d00ae718fa4899c4449dfe3b1
                 flipArm.setTargetPosition(0);
                 //flipPos = 0;
             }
@@ -155,7 +163,11 @@ public class Testing extends SkyStone4592 {
                 platformClamp.setPosition(0.2);
             }
 
+<<<<<<< HEAD
             telemetry.addData("flipArm", flipArm.getCurrentPosition());
+=======
+            telemetry.addData("flipArm", flipArm.getTargetPosition());
+>>>>>>> 34cc11e3cb2d872d00ae718fa4899c4449dfe3b1
 
             telemetry.addData("clamp", clampClaw.getPosition());
 

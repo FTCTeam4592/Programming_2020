@@ -44,8 +44,9 @@ public abstract class SkyStone4592 extends LinearOpMode {
         leftRear = hardwareMap.dcMotor.get("leftRear");
         rightRear = hardwareMap.dcMotor.get("rightRear");
 
-        liftSlide = hardwareMap.dcMotor.get("liftSlide");
         flipArm = hardwareMap.dcMotor.get("flipArm");
+        liftSlide = hardwareMap.dcMotor.get("liftSlide");
+
 
         flipArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         flipArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

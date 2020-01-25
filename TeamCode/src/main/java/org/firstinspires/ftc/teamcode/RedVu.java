@@ -315,8 +315,12 @@ public class RedVu extends SkyStone4592 {
                 driveReverse(1, 5);
                 strafeLeft(1, 17.5);
                 sleep(1000);
+<<<<<<< HEAD
                 flipArm.setTargetPosition(10);
                 flipArm.setPower(0.5);
+=======
+                flipArm.setTargetPosition(1); //hopefully this works //AAAAAAAAAAAAAAAAAAAA
+>>>>>>> 34cc11e3cb2d872d00ae718fa4899c4449dfe3b1
                 sleep(1000);
                 flipArm.setPower(0);
                 driveForward(1, 7.5);
