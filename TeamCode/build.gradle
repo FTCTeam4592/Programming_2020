@@ -13,10 +13,6 @@
 
 // Include common definitions from above.
 apply from: '../build.common.gradle'
-apply plugin: 'kotlin-android'
-repositories {
-    mavenCentral()
-}
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'org.openftc:easyopencv:1.2'
 }

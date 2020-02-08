@@ -38,122 +38,95 @@ public class NewDriveTesting extends SkyStone4592 {
             double rotPos = 0;
             double clawPos = 0.8;
 
-<<<<<<< HEAD
             double drive = Range.clip(gamepad1.left_stick_y, -1, 1);
             double strafe = Range.clip(gamepad1.left_stick_x, -1, 1);
             double rotate = Range.clip(gamepad1.right_stick_x, -1, 1);
-=======
-            double drive = Range.clip(-gamepad1.left_stick_y, -1, 1); //bruh
-            double strafe = Range.clip(gamepad1.right_stick_x, -1, 1);
-            double rotate = Range.clip(gamepad1.left_stick_x, -1, 1);
->>>>>>> 34cc11e3cb2d872d00ae718fa4899c4449dfe3b1
+//            double drive = Range.clip(-gamepad1.left_stick_y, -1, 1); //bruh
+//            double strafe = Range.clip(gamepad1.right_stick_x, -1, 1);
+//            double rotate = Range.clip(gamepad1.left_stick_x, -1, 1);
 
 
             double d = (float) scaleInput(drive);
             double s = (float) scaleInput(strafe);
             double r = (float) scaleInput(rotate);
 
-            leftFront.setPower(Range.clip((0.75) * (d + s + r), -1, 1));
+            leftFront.setPower(Range.clip((-0.75) * (d + s + r), -1, 1));
             leftRear.setPower(Range.clip((0.75) * (d - s + r), -1, 1));
-            rightFront.setPower(Range.clip((0.75) * (d - s - r), -1, 1));
+            rightFront.setPower(Range.clip((-0.75) * (d - s - r), -1, 1));
             rightRear.setPower(Range.clip((0.75) * (d + s - r), -1, 1));
 
 
-<<<<<<< HEAD
-            if(gamepad2.a && flipArm.getCurrentPosition()<400){
+            if (gamepad2.a && flipArm.getCurrentPosition() < 400) {
                 flipArm.setTargetPosition(850);
                 flipArm.setPower(0.5);
                 flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-            }
-            else if (gamepad2.a && flipArm.getCurrentPosition()>4){
+            } else if (gamepad2.a && flipArm.getCurrentPosition() > 4) {
                 flipArm.setTargetPosition(0);
                 flipArm.setPower(0.5);
                 flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-=======
-            if(gamepad2.a && flipArm.getTargetPosition() < 0.4){ //AAAAAAAAAAAAAAAAAAAA
-                flipArm.setTargetPosition(2); //anson don't set this to 5000 ever again please i beg you
-                flipArm.setPower(0.25);
-                //flipPos = 0.7;
+                if (gamepad2.a && flipArm.getTargetPosition() < 0.4) { //AAAAAAAAAAAAAAAAAAAA
+                    flipArm.setTargetPosition(2); //anson don't set this to 5000 ever again please i beg you
+                    flipArm.setPower(0.25);
+                    //flipPos = 0.7;
+                } else if (gamepad2.a && flipArm.getTargetPosition() > 0.4) {
+                    flipArm.setTargetPosition(0);
+                    //telemetry.addData("current position: ",  flipArm.getTargetPosition());
+                    flipArm.setPower(-0.5);
+                    //flipPos = 0;
+                }
+
+                //flipArm.setPosition(flipPos);
+
+
+                if (gamepad2.dpad_right) {
+                    rotateClaw.setPosition(0.5);
+                    //rotPos = 0.5;
+                } else {
+                    rotateClaw.setPosition(0);
+                }
+
+                double lift = Range.clip(gamepad2.left_stick_y, -1, 1);
+                double l = (float) scaleInput(lift);
+                liftSlide.setPower(Range.clip((0.75) * l, -1, 1));
+
+                if (gamepad2.b && capFlip.getPosition() < 0.3) {
+                    capFlip.setPosition(0.6);
+                } else if (gamepad2.b && capFlip.getPosition() > 0.3) {
+                    capFlip.setPosition(0);
+                }
+
+
+                //rotateClaw.setPosition(rotPos);
+
+                if (gamepad2.x) {
+                    clampClaw.setPosition(0.3);
+                    //clawPos = 1;
+                } else {
+                    clampClaw.setPosition(1);
+                    //clawPos = 0.2;
+                }
+
+                //clampClaw.setPosition(clawPos);
+
+                if (gamepad2.right_bumper) {
+                    platformClampLeft.setPosition(0.2);
+                } else {
+                    platformClampLeft.setPosition(0.9);
+                }
+
+                telemetry.addData("flipArm", flipArm.getCurrentPosition());
+                telemetry.addData("flipArm", flipArm.getTargetPosition());
+
+                telemetry.addData("clamp", clampClaw.getPosition());
+
+
+                telemetry.update();
             }
-            else if (gamepad2.a && flipArm.getTargetPosition() > 0.4){
-                flipArm.setTargetPosition(0);
-                //telemetry.addData("current position: ",  flipArm.getTargetPosition());
-                flipArm.setPower(-0.5);
-                //flipPos = 0;
->>>>>>> 34cc11e3cb2d872d00ae718fa4899c4449dfe3b1
-            }
-
-            //flipArm.setPosition(flipPos);
 
 
-            if (gamepad2.dpad_right) {
-                rotateClaw.setPosition(0.5);
-                //rotPos = 0.5;
-            }
-            else{
-                rotateClaw.setPosition(0);
-            }
-
-            double lift = Range.clip(gamepad2.left_stick_y, -1, 1);
-            double l = (float) scaleInput(lift);
-            liftSlide.setPower(Range.clip((0.75) * l, -1, 1));
-
-            if (gamepad2.b && capFlip.getPosition()<0.3){
-                capFlip.setPosition(0.6);
-            }
-            else if (gamepad2.b && capFlip.getPosition()>0.3){
-                capFlip.setPosition(0);
-            }
-
-
-
-
-
-            //rotateClaw.setPosition(rotPos);
-
-            if(gamepad2.x){
-                clampClaw.setPosition(0.3);
-                //clawPos = 1;
-            }
-            else{
-                clampClaw.setPosition(1);
-                //clawPos = 0.2;
-            }
-
-            //clampClaw.setPosition(clawPos);
-
-            if(gamepad2.right_bumper){
-                platformClamp.setPosition(0.2);
-            }
-            else{
-                platformClamp.setPosition(0.9);
-            }
-
-<<<<<<< HEAD
-            telemetry.addData("flipArm", flipArm.getCurrentPosition());
-=======
-            telemetry.addData("flipArm", flipArm.getTargetPosition());
->>>>>>> 34cc11e3cb2d872d00ae718fa4899c4449dfe3b1
-
-            telemetry.addData("clamp", clampClaw.getPosition());
-
-
-            telemetry.update();
         }
 
-
-
     }
-
-    private void arcade(double left, double right){
-
-        leftFront.setPower(left);
-        leftRear.setPower(left);
-        rightFront.setPower(right);
-        rightRear.setPower(right);
-
-    }
-
 }

@@ -21,7 +21,7 @@ written permission.
 NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS
 LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
-THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESSFOR A PARTICULAR PURPOSE
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
 ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
 FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
 DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
@@ -52,7 +52,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
  * @see <a href="http://revrobotics.com">REV Robotics Web Page</a>
  */
 @TeleOp(name = "Sensor: REV2mDistance", group = "Sensor")
-//@Disabled
+@Disabled
 public class SensorREV2mDistance extends LinearOpMode {
 
     private DistanceSensor sensorRange;
@@ -60,7 +60,7 @@ public class SensorREV2mDistance extends LinearOpMode {
     @Override
     public void runOpMode() {
         // you can use this as a regular DistanceSensor.
-        sensorRange = hardwareMap.get(DistanceSensor.class, "rearDistanceSensor");
+        sensorRange = hardwareMap.get(DistanceSensor.class, "sensor_range");
 
         // you can also cast this to a Rev2mDistanceSensor if you want to use added
         // methods associated with the Rev2mDistanceSensor class.

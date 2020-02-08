@@ -69,7 +69,7 @@ public class Testing extends SkyStone4592 {
 
             int current;
 
-            if(gamepad1.right_stick_x==0 && gamepad1.right_stick_y==0) {
+            if (gamepad1.right_stick_x == 0 && gamepad1.right_stick_y == 0) {
                 float movex = gamepad1.left_stick_y;
                 float movey = -1 * gamepad1.left_stick_x;
 
@@ -98,94 +98,74 @@ public class Testing extends SkyStone4592 {
                 leftRear.setPower(Range.clip(movex - movey + roll - rolr, -1, 1));
                 rightFront.setPower(Range.clip(-movex - movey - roll + rolr, -1, 1));
                 rightRear.setPower(Range.clip(movex + movey - roll + rolr, -1, 1));
-            }
-            else{
+            } else {
                 tele();
                 leftyPower = gamepad1.right_stick_y;
                 rightyPower = gamepad1.right_stick_y;
-                arcade(leftyPower,rightyPower);
+                //arcade(leftyPower, rightyPower);
             }
 
 
-            if(gamepad1.y){
+            if (gamepad1.y) {
                 liftSlide.setPower(0.5);
-            } else if (gamepad1.b){
+            } else if (gamepad1.b) {
                 liftSlide.setPower(-0.5);
-            } else{
+            } else {
                 liftSlide.setPower(0);
             }
 
-<<<<<<< HEAD
-            if(gamepad1.a && flipArm.getCurrentPosition()<4){
+            if (gamepad1.a && flipArm.getCurrentPosition() < 4) {
                 flipArm.setTargetPosition(10);
                 //flipPos = 0.7;
+            } else if (gamepad1.a && flipArm.getCurrentPosition() > 4) {
+
+                if (gamepad1.a && flipArm.getTargetPosition() < 0.4) { //AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                    flipArm.setTargetPosition(1);
+                    //flipPos = 0.7;
+                } else if (gamepad1.a && flipArm.getTargetPosition() > 0.4) {
+                    flipArm.setTargetPosition(0);
+                    //flipPos = 0;
+                }
+
+                //flipArm.setPosition(flipPos);
+
+
+                if (gamepad1.dpad_right) {
+                    rotateClaw.setPosition(0.5);
+                    //rotPos = 0.5;
+                } else {
+                    rotateClaw.setPosition(0);
+                }
+
+                //rotateClaw.setPosition(rotPos);
+
+                if (gamepad1.x) {
+                    clampClaw.setPosition(1);
+                    //clawPos = 1;
+                } else {
+                    clampClaw.setPosition(0.2);
+                    //clawPos = 0.2;
+                }
+
+                //clampClaw.setPosition(clawPos);
+
+                if (gamepad1.right_bumper) {
+                    platformClampLeft.setPosition(0.8);
+                } else {
+                    platformClampLeft.setPosition(0.2);
+                }
+
+                telemetry.addData("flipArm", flipArm.getCurrentPosition());
+                telemetry.addData("flipArm", flipArm.getTargetPosition());
+
+                telemetry.addData("clamp", clampClaw.getPosition());
+
+
+                telemetry.update();
             }
-            else if (gamepad1.a && flipArm.getCurrentPosition()>4){
-=======
-            if(gamepad1.a && flipArm.getTargetPosition() < 0.4){ //AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-                flipArm.setTargetPosition(1);
-                //flipPos = 0.7;
-            }
-            else if (gamepad1.a && flipArm.getTargetPosition() > 0.4){
->>>>>>> 34cc11e3cb2d872d00ae718fa4899c4449dfe3b1
-                flipArm.setTargetPosition(0);
-                //flipPos = 0;
-            }
-
-            //flipArm.setPosition(flipPos);
 
 
-            if (gamepad1.dpad_right) {
-                rotateClaw.setPosition(0.5);
-                //rotPos = 0.5;
-            }
-            else {
-                rotateClaw.setPosition(0);
-            }
-
-            //rotateClaw.setPosition(rotPos);
-
-            if(gamepad1.x){
-                clampClaw.setPosition(1);
-                //clawPos = 1;
-            }
-            else{
-                clampClaw.setPosition(0.2);
-                //clawPos = 0.2;
-            }
-
-            //clampClaw.setPosition(clawPos);
-
-            if(gamepad1.right_bumper){
-                platformClamp.setPosition(0.8);
-            }
-            else{
-                platformClamp.setPosition(0.2);
-            }
-
-<<<<<<< HEAD
-            telemetry.addData("flipArm", flipArm.getCurrentPosition());
-=======
-            telemetry.addData("flipArm", flipArm.getTargetPosition());
->>>>>>> 34cc11e3cb2d872d00ae718fa4899c4449dfe3b1
-
-            telemetry.addData("clamp", clampClaw.getPosition());
-
-
-            telemetry.update();
         }
 
-
-
     }
-
-    private void arcade(double left, double right){
-
-        leftFront.setPower(left);
-        leftRear.setPower(left);
-        rightFront.setPower(right);
-        rightRear.setPower(right);
-
-    }
-
 }

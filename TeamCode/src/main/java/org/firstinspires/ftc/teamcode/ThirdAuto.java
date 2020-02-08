@@ -257,12 +257,9 @@ public class ThirdAuto extends SkyStone4592 {
         autoBlueRight();
 
         driveForward(0.75, 30);
-<<<<<<< HEAD
         flipArm.setTargetPosition(10);
         flipArm.setPower(0.5);
-=======
         flipArm.setTargetPosition(1); //maybe works? //AAAAAAAAAAAAAAAAAAAA
->>>>>>> 34cc11e3cb2d872d00ae718fa4899c4449dfe3b1
         sleep(2000);
         flipArm.setPower(0);
         driveForward(0.5, 12);
