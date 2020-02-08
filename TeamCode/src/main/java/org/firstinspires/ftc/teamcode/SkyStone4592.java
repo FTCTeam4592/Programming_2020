@@ -202,16 +202,42 @@ public abstract class SkyStone4592 extends LinearOpMode {
 //          strafeRight(1, 105);
 
 
-        while(fDS.getDistance(DistanceUnit.INCH)>10){
-            leftFront.setPower(0.1);
-            rightFront.setPower(0.1);
-            leftRear.setPower(0.1);
-            rightRear.setPower(0.1);
+        while(fDS.getDistance(DistanceUnit.INCH)>7){
+            leftFront.setPower(-0.1);
+            rightFront.setPower(-0.1);
+            leftRear.setPower(-0.1);
+            rightRear.setPower(-0.1);
+
+            telemetry.addData("distance",fDS.getDistance(DistanceUnit.INCH));
+            telemetry.update();
+
         }
 
-        if(fDS.getDistance((DistanceUnit.INCH))<=10){
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftRear.setPower(0);
+        rightRear.setPower(0);
+
+        leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+        if(fDS.getDistance((DistanceUnit.INCH))<=7){
             telemetry.addData("visible",true);
+            telemetry.addData("distance",fDS.getDistance(DistanceUnit.INCH));
+
             telemetry.update();
+
+            leftFront.setPower(0);
+            rightFront.setPower(0);
+            leftRear.setPower(0);
+            rightRear.setPower(0);
+
+            leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         }
 
         leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -220,17 +246,12 @@ public abstract class SkyStone4592 extends LinearOpMode {
         rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
-        leftFront.setPower(0);
-        rightFront.setPower(0);
-        leftRear.setPower(0);
-        rightRear.setPower(0);
-
         sleep(1000);
 
-        platformClampRight.setPosition(1);
-        platformClampLeft.setPosition(1);
+        platformClampRight.setPosition(0);
+        platformClampLeft.setPosition(0);
 
-        strafeRight(.75, 50);
+        driveForward(1, 100);
 
         leftFront.setPower(0);
         rightFront.setPower(0);
@@ -519,10 +540,10 @@ public abstract class SkyStone4592 extends LinearOpMode {
         }
     }
     public void strafeRight(double speed, double distance){
-        encoderDrive(speed, -distance, distance, distance, -distance, 3.0);
+        encoderDrive(speed, distance, -distance, -distance, distance, 3.0);
     }
     public void strafeLeft(double speed, double distance){
-        encoderDrive(speed, distance, -distance, -distance, distance, 3.0);
+        encoderDrive(speed, -distance, distance, distance, -distance, 3.0);
     }
     public void driveForward(double speed, double distance){
         encoderDrive(speed, distance, distance, distance, distance, 3.0);
