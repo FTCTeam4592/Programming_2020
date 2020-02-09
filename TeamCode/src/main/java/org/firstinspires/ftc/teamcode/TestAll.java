@@ -38,9 +38,9 @@ public class TestAll extends SkyStone4592 {
         clampClaw.setPosition(0); //should open the claw?
         sleep(500);
 
-        platformClamp.setPosition(0.9); //test the platform grabber
+        platformClampLeft.setPosition(0.9); //test the platform grabber
         sleep(500);
-        platformClamp.setPosition(0); //put it back, hopefully
+        platformClampLeft.setPosition(0); //put it back, hopefully
         sleep(500);
     }
 }

@@ -4,13 +4,14 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.Robot4592;
+import org.firstinspires.ftc.teamcode.SkyStone4592;
 
 
-@Autonomous(name="DriveT rain Test", group="Test")
-@Disabled
+@Autonomous(name="DriveTrain Test", group="Test")
+//@Disabled
 
 
-public class TestDriveTrainAutonomous extends Robot4592 {
+public class TestDriveTrainAutonomous extends SkyStone4592 {
 
     /* Declare OpMode members. */
 
@@ -41,7 +42,6 @@ public class TestDriveTrainAutonomous extends Robot4592 {
                 rightFront.getCurrentPosition(),
                 leftRear.getCurrentPosition(),
                 rightRear.getCurrentPosition());
-        telemetry.addData("Flip Out Position", flipOut.getCurrentPosition());
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)
