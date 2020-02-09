@@ -24,6 +24,7 @@ public class NewDriveTesting extends SkyStone4592 {
         rightRear.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         liftSlide.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         while (opModeIsActive()) {
 
@@ -67,13 +68,13 @@ public class NewDriveTesting extends SkyStone4592 {
                 flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
                 if (gamepad2.a && flipArm.getTargetPosition() < 0.4) { //AAAAAAAAAAAAAAAAAAAA
-                    flipArm.setTargetPosition(2); //anson don't set this to 5000 ever again please i beg you
-                    flipArm.setPower(0.25);
+                    flipArm.setTargetPosition(5000); //anson don't set this to 5000 ever again please i beg you
+                    //flipArm.setPower(0.25);
                     //flipPos = 0.7;
                 } else if (gamepad2.a && flipArm.getTargetPosition() > 0.4) {
                     flipArm.setTargetPosition(0);
                     //telemetry.addData("current position: ",  flipArm.getTargetPosition());
-                    flipArm.setPower(-0.5);
+                    //flipArm.setPower(-0.5);
                     //flipPos = 0;
                 }
 
