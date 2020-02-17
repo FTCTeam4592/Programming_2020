@@ -254,7 +254,7 @@ public class RedVu extends SkyStone4592 {
         // Tap the preview window to receive a fresh image.
 
         targetsSkyStone.activate();
-        autoRedRight();
+        fourthAuto();
 
         waitForStart();
 

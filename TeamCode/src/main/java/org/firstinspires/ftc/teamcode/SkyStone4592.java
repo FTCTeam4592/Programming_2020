@@ -158,129 +158,16 @@ public abstract class SkyStone4592 extends LinearOpMode {
         leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        //strafeLeft(0.6, 3);
-
-//        //FIRST STEP
-//        leftFront.setPower(-1);
-//        rightFront.setPower(1);
-//        leftRear.setPower(0.45);
-//        rightRear.setPower(-0.45);
-//        sleep(1250);
-//        leftFront.setPower(0);
-//        rightFront.setPower(0);
-//        leftRear.setPower(0);
-//        rightRear.setPower(0);
-
-//          driveForward(1, 49 );
-//
-//          sleep(500);
-//
-//          strafeLeft(0.75, 70);
-
-
-//          while(fDS.getDistance(DistanceUnit.INCH) > 1) { //drive forward
-//              driveReverse(5, 0.01);
-//          }
-//
-//          sleep(500);
-//
-//
-//          platformClamp.setPosition(0.9);
-//
-//          sleep(2000);
-//
-//
-//        while(fDS.getDistance(DistanceUnit.INCH) > 1) { //drive forward
-//            driveReverse(5, 0.01);
-//        }
-//
-//          sleep(1000);
-//
-//          platformClamp.setPosition(0.2);
-//
-//
-//          strafeRight(1, 105);
-
-
-        while(fDS.getDistance(DistanceUnit.INCH)>7){
-            leftFront.setPower(-0.1);
-            rightFront.setPower(-0.1);
-            leftRear.setPower(-0.1);
-            rightRear.setPower(-0.1);
-
-            telemetry.addData("distance",fDS.getDistance(DistanceUnit.INCH));
-            telemetry.update();
-
-        }
-
-        leftFront.setPower(0);
-        rightFront.setPower(0);
-        leftRear.setPower(0);
-        rightRear.setPower(0);
-
-        leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
-        if(fDS.getDistance((DistanceUnit.INCH))<=7){
-            telemetry.addData("visible",true);
-            telemetry.addData("distance",fDS.getDistance(DistanceUnit.INCH));
-
-            telemetry.update();
-
-            leftFront.setPower(0);
-            rightFront.setPower(0);
-            leftRear.setPower(0);
-            rightRear.setPower(0);
-
-            leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        }
-
-        leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
-
-        sleep(1000);
-
-        platformClampRight.setPosition(0);
-        platformClampLeft.setPosition(0);
-
-        driveForward(1, 100);
-
-        leftFront.setPower(0);
-        rightFront.setPower(0);
-        leftRear.setPower(0);
-        rightRear.setPower(0);
-
-
-       // driveForward(1, 120);
-        //strafeLeft(0.5, 49);
-//        sleep(500);
-//        driveReverse(0.75, 60);
-//        sleep(500);
-//        platformClamp.setPosition(0.2);
-//        sleep(2000);
-//        driveForward(1, 75);
-//        sleep(500);
-//        platformClamp.setPosition(0.9);
-//        strafeRight(1, 105);
-
-
     }
 
-    public void autoBlueLeft(){
+    public void secondAuto(){
         leftFront = hardwareMap.dcMotor.get("leftFront");
         rightFront = hardwareMap.dcMotor.get("rightFront");
         leftRear = hardwareMap.dcMotor.get("leftRear");
         rightRear = hardwareMap.dcMotor.get("rightRear");
 
-        platformClampLeft = hardwareMap.servo.get("platformClamp");
+        platformClampLeft = hardwareMap.servo.get("platformClampLeft");
+        platformClampRight = hardwareMap.servo.get("platformClampRight");
 
         leftFront.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
         rightFront.setDirection(DcMotor.Direction.FORWARD);
@@ -297,70 +184,18 @@ public abstract class SkyStone4592 extends LinearOpMode {
         leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+        fDS = hardwareMap.get(DistanceSensor.class, "frontDistanceSensor");
+
         // Set all motors to zero power
         leftFront.setPower(0);
         rightFront.setPower(0);
         leftRear.setPower(0);
         rightRear.setPower(0);
 
-        //strafeLeft(0.6, 3);
-
-//        //FIRST STEP
-//        leftFront.setPower(-1);
-//        rightFront.setPower(1);
-//        leftRear.setPower(0.45);
-//        rightRear.setPower(-0.45);
-//        sleep(1250);
-//        leftFront.setPower(0);
-//        rightFront.setPower(0);
-//        leftRear.setPower(0);
-//        rightRear.setPower(0);
-
-//        driveReverse(1, 49);
-//
-//        sleep(500);
-//
-//        strafeLeft(0.75, 70);
-//
-//        sleep(500);
-//
-//
-//        platformClamp.setPosition(0.9);
-//
-//        sleep(2000);
-//
-//
-//        strafeRight(1, 100);
-//
-//        sleep(1000);
-//
-//        platformClamp.setPosition(0.2);
-//
-//
-//        driveForward(1, 105);
-
-        while(fDS.getDistance(DistanceUnit.INCH) > 1) { //drive forward
-            driveReverse(5, 0.01);
-        }
-
-        sleep(500);
-
-
-        platformClampLeft.setPosition(0.9);
-
-        sleep(2000);
-
-
-        while(fDS.getDistance(DistanceUnit.INCH) > 1) { //drive forward
-            driveReverse(5, 0.01);
-        }
-
-        sleep(1000);
-
-        platformClampLeft.setPosition(0.2);
-
-
-        strafeLeft(1, 105);
+        leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
     }
@@ -402,16 +237,14 @@ public abstract class SkyStone4592 extends LinearOpMode {
 
     }
 
-    public void autoRedRight(){
+    public void fourthAuto(){
         leftFront = hardwareMap.dcMotor.get("leftFront");
         rightFront = hardwareMap.dcMotor.get("rightFront");
         leftRear = hardwareMap.dcMotor.get("leftRear");
         rightRear = hardwareMap.dcMotor.get("rightRear");
-        flipArm = hardwareMap.dcMotor.get("flipArm");
 
         platformClampLeft = hardwareMap.servo.get("platformClampLeft");
-
-        clampClaw = hardwareMap.servo.get("clampClaw");
+        platformClampRight = hardwareMap.servo.get("platformClampRight");
 
         leftFront.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
         rightFront.setDirection(DcMotor.Direction.FORWARD);
@@ -428,41 +261,18 @@ public abstract class SkyStone4592 extends LinearOpMode {
         leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+        fDS = hardwareMap.get(DistanceSensor.class, "frontDistanceSensor");
+
         // Set all motors to zero power
         leftFront.setPower(0);
         rightFront.setPower(0);
         leftRear.setPower(0);
         rightRear.setPower(0);
 
-        clampClaw.setPosition(0.3);
-
-
-        //strafeLeft(0.6, 3);
-
-//        //FIRST STEP
-//        leftFront.setPower(-1);
-//        rightFront.setPower(1);
-//        leftRear.setPower(0.45);
-//        rightRear.setPower(-0.45);
-//        sleep(1250);
-//        leftFront.setPower(0);
-//        rightFront.setPower(0);
-//        leftRear.setPower(0);
-//        rightRear.setPower(0);
-
-//        driveForward(0.75, 30);
-//        flipArm.setPosition(0.725);
-//        sleep(2000);
-//        driveForward(0.5, 12);
-//        sleep(500);
-//        clampClaw.setPosition(1);
-//        sleep(1000);
-//        turnRight(0.5, 45);
-//        driveForward(0.75, 80);
-//        clampClaw.setPosition(0);
-//        sleep(500);
-//        driveReverse(0.7, 40);
-
+        leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
     }
 

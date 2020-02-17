@@ -44,11 +44,11 @@ public class opencvSkystoneDetector extends LinearOpMode {
     private static int valLeft = -1;
     private static int valRight = -1;
 
-    private static float rectHeight = .6f/8f;
+    private static float rectHeight = 0.6f/8f;
     private static float rectWidth = 1.5f/8f;
 
-    private static float offsetX = 0f/8f;//changing this moves the three rects and the three circles left or right, range : (-2, 2) not inclusive
-    private static float offsetY = 0f/8f;//changing this moves the three rects and circles up or down, range: (-4, 4) not inclusive
+    private static float offsetX = 1f/8f;//changing this moves the three rects and the three circles left or right, range : (-2, 2) not inclusive
+    private static float offsetY = 1f/16f;//changing this moves the three rects and circles up or down, range: (-4, 4) not inclusive
 
     private static float[] midPos = {4f/8f+offsetX, 4f/8f+offsetY};//0 = col, 1 = row
     private static float[] leftPos = {2f/8f+offsetX, 4f/8f+offsetY};
@@ -71,7 +71,7 @@ public class opencvSkystoneDetector extends LinearOpMode {
 
         phoneCam.openCameraDevice();//open camera
         phoneCam.setPipeline(new StageSwitchingPipeline());//different stages
-        phoneCam.startStreaming(rows, cols, OpenCvCameraRotation.UPRIGHT);//display on RC
+        phoneCam.startStreaming(rows, cols, OpenCvCameraRotation.SIDEWAYS_RIGHT);//display on RC
         //width, height
         //width = height in this case, because camera is in portrait mode.
 
@@ -87,6 +87,18 @@ public class opencvSkystoneDetector extends LinearOpMode {
             //call movement functions
 //            strafe(0.4, 200);
 //            moveDistance(0.4, 700);
+
+
+            if(valLeft==0){
+                telemetry.addData("position", "left");
+            }
+            else if (valMid==0){
+                telemetry.addData("position", "middle");
+            }
+            else if (valRight==0){
+                telemetry.addData("position", "right");
+            }
+
 
         }
     }
