@@ -82,6 +82,8 @@ public class FourthAuto extends SkyStone4592 {
 
         fourthAuto();
         waitForStart();
+
+
         runtime.reset();
         while (opModeIsActive()) {
             telemetry.addData("Values", valLeft+"   "+valMid+"   "+valRight);
@@ -108,77 +110,146 @@ public class FourthAuto extends SkyStone4592 {
                 telemetry.addData("position", "right");
             }
 
-            while(fDS.getDistance(DistanceUnit.INCH)>6.5){
-                leftFront.setPower(0.05);
-                rightFront.setPower(0.05);
-                leftRear.setPower(0.05);
-                rightRear.setPower(0.05);
-
-                telemetry.addData("distance",fDS.getDistance(DistanceUnit.INCH));
-                telemetry.update();
-
-            }
-
-            leftFront.setPower(0);
-            rightFront.setPower(0);
-            leftRear.setPower(0);
-            rightRear.setPower(0);
-
-            leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
-            if(fDS.getDistance((DistanceUnit.INCH))<=6.5){
-                telemetry.addData("visible",true);
-                telemetry.addData("distance",fDS.getDistance(DistanceUnit.INCH));
-
-                telemetry.update();
-
-                leftFront.setPower(0);
-                rightFront.setPower(0);
-                leftRear.setPower(0);
-                rightRear.setPower(0);
-
-                leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-                rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-                leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-                rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            }
-
-            leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+                drivetoDist(7);
 
             if(p==-1){
+                strafeLeft(0.5, 10);
                 telemetry.addData("position", "left");
-                driveReverse(0.5,20);
+
+                driveReverse(0.025,25);
                 sleep(1000);
-                flipArm.setTargetPosition(820);
+
+//                rotateClaw.setPosition(0);
+//                sleep(2000);
+
+                flipArm.setTargetPosition(825);
                 flipArm.setPower(0.25);
                 flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                rotateClaw.setPosition(-1);
                 sleep(1000);
-                clampClaw.setPosition(-1);
+
+                rotateClaw.setPosition(-1);
                 sleep(1000);
-                turnRight(0.5, 45);
-                driveForward(0.5, 150);
+
+                clampClaw.setPosition(1);
+
+                drivetoDist(6f);
+
+                clampClaw.setPosition(0);
                 sleep(1000);
+
+                driveReverse(0.025, 20);
+                sleep(1000);
+
+                turnRight(0.5, 22.5);
+                driveForward(0.076, 200);
+                sleep(1000);
+
                 clampClaw.setPosition(1);
                 sleep(1000);
+
+                rotateClaw.setPosition(1);
+                sleep(1000);
+
                 flipArm.setTargetPosition(0);
                 flipArm.setPower(0.25);
                 flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                driveReverse(0.5, 50);
+                sleep(2000);
+                driveReverse(1, 100);
+                sleep(100000);
 
             }
             else if (p==0){
-                strafeRight(0.5, 10);
+                strafeRight(0.5, 12.5);
                 telemetry.addData("position", "middle");
+
+                driveReverse(0.025,25);
+                sleep(1000);
+
+//                rotateClaw.setPosition(0);
+//                sleep(2000);
+
+                flipArm.setTargetPosition(825);
+                flipArm.setPower(0.25);
+                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                rotateClaw.setPosition(-1);
+                sleep(1000);
+
+                rotateClaw.setPosition(-1);
+                sleep(1000);
+
+                clampClaw.setPosition(1);
+
+                drivetoDist(6f);
+
+                clampClaw.setPosition(0);
+                sleep(1000);
+
+                driveReverse(0.025, 20);
+                sleep(1000);
+
+                turnRight(0.5, 22.5);
+                driveForward(0.067, 200);
+                sleep(1000);
+
+                clampClaw.setPosition(1);
+                sleep(1000);
+
+                rotateClaw.setPosition(1);
+                sleep(1000);
+
+                flipArm.setTargetPosition(0);
+                flipArm.setPower(0.25);
+                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sleep(2000);
+                driveReverse(1, 100);
+                sleep(100000);
             }
             else if (p==1){
-                strafeRight(0.5, 20);
+                strafeRight(0.5, 30);
                 telemetry.addData("position", "right");
+
+                driveReverse(0.025,25);
+                sleep(1000);
+
+//                rotateClaw.setPosition(0);
+//                sleep(2000);
+
+                flipArm.setTargetPosition(825);
+                flipArm.setPower(0.25);
+                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                rotateClaw.setPosition(-1);
+                sleep(1000);
+
+                rotateClaw.setPosition(-1);
+                sleep(1000);
+
+                clampClaw.setPosition(1);
+
+                drivetoDist(6f);
+
+                clampClaw.setPosition(0);
+                sleep(1000);
+
+                driveReverse(0.025, 20);
+                sleep(1000);
+
+                turnRight(0.5, 22.5);
+                driveForward(0.067, 200);
+                sleep(1000);
+
+                clampClaw.setPosition(1);
+                sleep(1000);
+
+                rotateClaw.setPosition(1);
+                sleep(1000);
+
+                flipArm.setTargetPosition(0);
+                flipArm.setPower(0.25);
+                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sleep(2000);
+                driveReverse(1, 100);
+                sleep(100000);
             }
 
 

@@ -242,6 +242,7 @@ public abstract class SkyStone4592 extends LinearOpMode {
         rightFront = hardwareMap.dcMotor.get("rightFront");
         leftRear = hardwareMap.dcMotor.get("leftRear");
         rightRear = hardwareMap.dcMotor.get("rightRear");
+        flipArm = hardwareMap.dcMotor.get("flipArm");
 
         platformClampLeft = hardwareMap.servo.get("platformClampLeft");
         platformClampRight = hardwareMap.servo.get("platformClampRight");
@@ -250,6 +251,9 @@ public abstract class SkyStone4592 extends LinearOpMode {
         rightFront.setDirection(DcMotor.Direction.FORWARD);
         leftRear.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
         rightRear.setDirection(DcMotor.Direction.FORWARD);
+
+        flipArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        flipArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -260,6 +264,9 @@ public abstract class SkyStone4592 extends LinearOpMode {
         rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        rotateClaw = hardwareMap.servo.get("rotateClaw");
+        clampClaw = hardwareMap.servo.get("clampClaw");
 
         fDS = hardwareMap.get(DistanceSensor.class, "frontDistanceSensor");
 
@@ -419,6 +426,51 @@ public abstract class SkyStone4592 extends LinearOpMode {
         rightFront.setPower(0);
         leftRear.setPower(0);
         rightRear.setPower(0);
+    }
+
+    public void drivetoDist(float distance){
+        while(fDS.getDistance(DistanceUnit.INCH)>distance){
+            leftFront.setPower(0.05);
+            rightFront.setPower(0.05);
+            leftRear.setPower(0.05);
+            rightRear.setPower(0.05);
+
+            telemetry.addData("distance",fDS.getDistance(DistanceUnit.INCH));
+            telemetry.update();
+
+        }
+
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftRear.setPower(0);
+        rightRear.setPower(0);
+
+        leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+        if(fDS.getDistance((DistanceUnit.INCH))<=distance){
+            telemetry.addData("visible",true);
+            telemetry.addData("distance",fDS.getDistance(DistanceUnit.INCH));
+
+            telemetry.update();
+
+            leftFront.setPower(0);
+            rightFront.setPower(0);
+            leftRear.setPower(0);
+            rightRear.setPower(0);
+
+            leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        }
+
+        leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     public double scaleInput(double dVal)  {

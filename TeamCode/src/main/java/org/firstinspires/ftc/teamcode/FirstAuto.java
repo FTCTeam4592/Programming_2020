@@ -119,7 +119,7 @@ public class FirstAuto extends SkyStone4592 {
 
         driveReverse(0.5, 50);
 
-        platformClampLeft.setPosition(0);
+        platformClampLeft.setPosition(-0.5);
         platformClampRight.setPosition(0.5);
 
         sleep(1000);
