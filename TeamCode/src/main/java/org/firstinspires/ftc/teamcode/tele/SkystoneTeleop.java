@@ -62,7 +62,7 @@ public class SkystoneTeleop extends SkyStone4592 {
 
 
                 if (gamepad2.dpad_right) {
-                    rotateClaw.setPosition(0.5);
+                    rotateClaw.setPosition(-1);
                     //rotPos = 0.5;
                 } else {
                     rotateClaw.setPosition(0);

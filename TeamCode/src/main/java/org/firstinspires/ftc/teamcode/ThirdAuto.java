@@ -1,407 +1,395 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.robotcore.external.ClassFactory;
-import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
-import org.firstinspires.ftc.robotcore.external.matrices.VectorF;
-import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
-import org.firstinspires.ftc.teamcode.VuSkyStoneNav;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfPoint;
+import org.opencv.core.MatOfPoint2f;
+import org.opencv.core.Point;
+import org.opencv.core.Rect;
+import org.opencv.core.Scalar;
+import org.opencv.imgproc.Imgproc;
+import org.openftc.easyopencv.OpenCvCamera;
+import org.openftc.easyopencv.OpenCvCameraRotation;
+import org.openftc.easyopencv.OpenCvInternalCamera;
+import org.openftc.easyopencv.OpenCvPipeline;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.DEGREES;
-import static org.firstinspires.ftc.robotcore.external.navigation.AxesOrder.XYZ;
-import static org.firstinspires.ftc.robotcore.external.navigation.AxesOrder.YZX;
-import static org.firstinspires.ftc.robotcore.external.navigation.AxesReference.EXTRINSIC;
-import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer.CameraDirection.BACK;
 
-
-@Autonomous(name="THIRD AUTO", group="Testing")
-//@Disabled
-
-
+/**
+ * Created by maryjaneb  on 11/13/2016.
+ *
+ * nerverest ticks
+ * 60 1680
+ * 40 1120
+ * 20 560
+ *
+ * monitor: 640 x 480
+ *YES
+ */
+@Autonomous(name= "THIRD AUTO", group="Sky autonomous")
+//@Disabled//comment out this line before using
 public class ThirdAuto extends SkyStone4592 {
+    private ElapsedTime runtime = new ElapsedTime();
 
-    /* Declare OpMode members. */
+    //0 means skystone, 1 means yellow stone
+    //-1 for debug, but we can keep it like this because if it works, it should change to either 0 or 255
+    private static int valMid = -1;
+    private static int valLeft = -1;
+    private static int valRight = -1;
 
-    private ElapsedTime     runtime = new ElapsedTime();
+    private static float rectHeight = 0.6f/8f;
+    private static float rectWidth = 1.5f/8f;
 
-    private static final String VUFORIA_KEY = "AeKRT6v/////AAABmeQIEeOGbknuo6nv2gLUXqFIJv78SYXPssQFKeG4KqJWHyfOmywTp53n7QytFuQ1kNt56/GW+C2x2RpdEKQp4n8BdRf8ql0OGxNwHvU2U4dfftfXSd8H7//uDFzQTf0NB0Y7unC2LC2na0hfsyZu0PbRB6ZTQMEJ5vsOh6hWcY6I4JW8M/khdqaLQzE76KlQCp5HPcFxdfLR1ynktLVi7OTgr7GOmFn/RXcYzXzP0sFVlq89R6iGlquZLruiEM6xAGeb2f7N9wECw8TAlwNjvGWqwFy21jewMUHrLlXFOc7kUGoT38hr0x9oqSUPJO6uQoWjW0XbL4S7igGxIFH34uic1dCzHcaFnLlo640LEf2y";
+    private static float offsetX = 1f/8f;//changing this moves the three rects and the three circles left or right, range : (-2, 2) not inclusive
+    private static float offsetY = 1f/16f;//changing this moves the three rects and circles up or down, range: (-4, 4) not inclusive
 
-    private static final VuforiaLocalizer.CameraDirection CAMERA_CHOICE = BACK;
-    private static final boolean PHONE_IS_PORTRAIT = true  ;
+    private static float[] midPos = {4f/8f+offsetX, 4f/8f+offsetY};//0 = col, 1 = row
+    private static float[] leftPos = {2f/8f+offsetX, 4f/8f+offsetY};
+    private static float[] rightPos = {6f/8f+offsetX, 4f/8f+offsetY};
+    //moves all rectangles right or left by amount. units are in ratio to monitor
 
-    private static final float mmPerInch        = 25.4f;
-    private static final float mmTargetHeight   = (6) * mmPerInch;          // the height of the center of the target image above the floor
+    private final int rows = 640;
+    private final int cols = 480;
 
-    // Constant for Stone Target
-    private static final float stoneZ = 2.00f * mmPerInch;
+    OpenCvCamera phoneCam;
 
-    // Constants for the center support targets
-    private static final float bridgeZ = 6.42f * mmPerInch;
-    private static final float bridgeY = 23 * mmPerInch;
-    private static final float bridgeX = 5.18f * mmPerInch;
-    private static final float bridgeRotY = 59;                                 // Units are degrees
-    private static final float bridgeRotZ = 180;
-
-    // Constants for perimeter targets
-    private static final float halfField = 72 * mmPerInch;
-    private static final float quadField  = 36 * mmPerInch;
-
-    private OpenGLMatrix lastLocation = null;
-    private VuforiaLocalizer vuforia = null;
-    private boolean targetVisible = false;
-    private float phoneXRotate    = 0;
-    private float phoneYRotate    = 0;
-    private float phoneZRotate    = 0;
-
-
-
-
-    static final double     COUNTS_PER_MOTOR_REV    = 1120.0 ;    // eg: AndyMark NeverRest40 Motor Encoder
-    static final double     DRIVE_GEAR_REDUCTION    = .5 ;     // This is < 1.0 if geared UP
-    static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
-    static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION)/(WHEEL_DIAMETER_INCHES * 3.1415);
-
-
-
-
+    private int p;
 
     @Override
-    public void runOpMode() {
+    public void runOpMode() throws InterruptedException {
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
 
-        // VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
+        //P.S. if you're using the latest version of easyopencv, you might need to change the next line to the following:
+        //phoneCam = OpenCvCameraFactory.getInstance().createInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);
+        phoneCam = new OpenCvInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);//remove this
 
-        parameters.vuforiaLicenseKey = VUFORIA_KEY;
-        parameters.cameraDirection   = CAMERA_CHOICE;
+        phoneCam.openCameraDevice();//open camera
+        phoneCam.setPipeline(new StageSwitchingPipeline());//different stages
+        phoneCam.startStreaming(rows, cols, OpenCvCameraRotation.SIDEWAYS_LEFT);//display on RC
+        //width, height
+        //width = height in this case, because camera is in portrait mode.
 
-        //  Instantiate the Vuforia engine
-        vuforia = ClassFactory.getInstance().createVuforia(parameters);
 
-        // Load the data sets for the trackable objects. These particular data
-        // sets are stored in the 'assets' part of our application.
-        VuforiaTrackables targetsSkyStone = this.vuforia.loadTrackablesFromAsset("Skystone");
-
-        VuforiaTrackable stoneTarget = targetsSkyStone.get(0);
-        stoneTarget.setName("Stone Target");
-        VuforiaTrackable blueRearBridge = targetsSkyStone.get(1);
-        blueRearBridge.setName("Blue Rear Bridge");
-        VuforiaTrackable redRearBridge = targetsSkyStone.get(2);
-        redRearBridge.setName("Red Rear Bridge");
-        VuforiaTrackable redFrontBridge = targetsSkyStone.get(3);
-        redFrontBridge.setName("Red Front Bridge");
-        VuforiaTrackable blueFrontBridge = targetsSkyStone.get(4);
-        blueFrontBridge.setName("Blue Front Bridge");
-        VuforiaTrackable red1 = targetsSkyStone.get(5);
-        red1.setName("Red Perimeter 1");
-        VuforiaTrackable red2 = targetsSkyStone.get(6);
-        red2.setName("Red Perimeter 2");
-        VuforiaTrackable front1 = targetsSkyStone.get(7);
-        front1.setName("Front Perimeter 1");
-        VuforiaTrackable front2 = targetsSkyStone.get(8);
-        front2.setName("Front Perimeter 2");
-        VuforiaTrackable blue1 = targetsSkyStone.get(9);
-        blue1.setName("Blue Perimeter 1");
-        VuforiaTrackable blue2 = targetsSkyStone.get(10);
-        blue2.setName("Blue Perimeter 2");
-        VuforiaTrackable rear1 = targetsSkyStone.get(11);
-        rear1.setName("Rear Perimeter 1");
-        VuforiaTrackable rear2 = targetsSkyStone.get(12);
-        rear2.setName("Rear Perimeter 2");
-
-        // For convenience, gather together all the trackable objects in one easily-iterable collection */
-        List<VuforiaTrackable> allTrackables = new ArrayList<VuforiaTrackable>();
-        allTrackables.addAll(targetsSkyStone);
-
-        /**
-         * In order for localization to work, we need to tell the system where each target is on the field, and
-         * where the phone resides on the robot.  These specifications are in the form of <em>transformation matrices.</em>
-         * Transformation matrices are a central, important concept in the math here involved in localization.
-         * See <a href="https://en.wikipedia.org/wiki/Transformation_matrix">Transformation Matrix</a>
-         * for detailed information. Commonly, you'll encounter transformation matrices as instances
-         * of the {@link OpenGLMatrix} class.
-         *
-         * If you are standing in the Red Alliance Station looking towards the center of the field,
-         *     - The X axis runs from your left to the right. (positive from the center to the right)
-         *     - The Y axis runs from the Red Alliance Station towards the other side of the field
-         *       where the Blue Alliance Station is. (Positive is from the center, towards the BlueAlliance station)
-         *     - The Z axis runs from the floor, upwards towards the ceiling.  (Positive is above the floor)
-         *
-         * Before being transformed, each target image is conceptually located at the origin of the field's
-         *  coordinate system (the center of the field), facing up.
-         */
-
-        // Set the position of the Stone Target.  Since it's not fixed in position, assume it's at the field origin.
-        // Rotated it to to face forward, and raised it to sit on the ground correctly.
-        // This can be used for generic target-centric approach algorithms
-        stoneTarget.setLocation(OpenGLMatrix
-                .translation(0, 0, stoneZ)
-                .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0, -90)));
-
-        //Set the position of the bridge support targets with relation to origin (center of field)
-        blueFrontBridge.setLocation(OpenGLMatrix
-                .translation(-bridgeX, bridgeY, bridgeZ)
-                .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 0, bridgeRotY, bridgeRotZ)));
-
-        blueRearBridge.setLocation(OpenGLMatrix
-                .translation(-bridgeX, bridgeY, bridgeZ)
-                .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 0, -bridgeRotY, bridgeRotZ)));
-
-        redFrontBridge.setLocation(OpenGLMatrix
-                .translation(-bridgeX, -bridgeY, bridgeZ)
-                .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 0, -bridgeRotY, 0)));
-
-        redRearBridge.setLocation(OpenGLMatrix
-                .translation(bridgeX, -bridgeY, bridgeZ)
-                .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 0, bridgeRotY, 0)));
-
-        //Set the position of the perimeter targets with relation to origin (center of field)
-        red1.setLocation(OpenGLMatrix
-                .translation(quadField, -halfField, mmTargetHeight)
-                .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0, 180)));
-
-        red2.setLocation(OpenGLMatrix
-                .translation(-quadField, -halfField, mmTargetHeight)
-                .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0, 180)));
-
-        front1.setLocation(OpenGLMatrix
-                .translation(-halfField, -quadField, mmTargetHeight)
-                .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0 , 90)));
-
-        front2.setLocation(OpenGLMatrix
-                .translation(-halfField, quadField, mmTargetHeight)
-                .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0, 90)));
-
-        blue1.setLocation(OpenGLMatrix
-                .translation(-quadField, halfField, mmTargetHeight)
-                .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0, 0)));
-
-        blue2.setLocation(OpenGLMatrix
-                .translation(quadField, halfField, mmTargetHeight)
-                .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0, 0)));
-
-        rear1.setLocation(OpenGLMatrix
-                .translation(halfField, quadField, mmTargetHeight)
-                .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0 , -90)));
-
-        rear2.setLocation(OpenGLMatrix
-                .translation(halfField, -quadField, mmTargetHeight)
-                .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0, -90)));
-
-        //
-        // Create a transformation matrix describing where the phone is on the robot.
-        //
-        // NOTE !!!!  It's very important that you turn OFF your phone's Auto-Screen-Rotation option.
-        // Lock it into Portrait for these numbers to work.
-        //
-        // Info:  The coordinate frame for the robot looks the same as the field.
-        // The robot's "forward" direction is facing out along X axis, with the LEFT side facing out along the Y axis.
-        // Z is UP on the robot.  This equates to a bearing angle of Zero degrees.
-        //
-        // The phone starts out lying flat, with the screen facing Up and with the physical top of the phone
-        // pointing to the LEFT side of the Robot.
-        // The two examples below assume that the camera is facing forward out the front of the robot.
-
-        // We need to rotate the camera around it's long axis to bring the correct camera forward.
-        if (CAMERA_CHOICE == BACK) {
-            phoneYRotate = -90;
-        } else {
-            phoneYRotate = 90;
-        }
-
-        // Rotate the phone vertical about the X axis if it's in portrait mode
-        if (PHONE_IS_PORTRAIT) {
-            phoneXRotate = 90 ;
-        }
-
-        // Next, translate the camera lens to where it is on the robot.
-        // In this example, it is centered (left to right), but forward of the middle of the robot, and above ground level.
-        final float CAMERA_FORWARD_DISPLACEMENT  = 4.0f * mmPerInch;   // eg: Camera is 4 Inches in front of robot center
-        final float CAMERA_VERTICAL_DISPLACEMENT = 8.0f * mmPerInch;   // eg: Camera is 8 Inches above ground
-        final float CAMERA_LEFT_DISPLACEMENT     = 0;     // eg: Camera is ON the robot's center line
-
-        OpenGLMatrix robotFromCamera = OpenGLMatrix
-                .translation(CAMERA_FORWARD_DISPLACEMENT, CAMERA_LEFT_DISPLACEMENT, CAMERA_VERTICAL_DISPLACEMENT)
-                .multiplied(Orientation.getRotationMatrix(EXTRINSIC, YZX, DEGREES, phoneYRotate, phoneZRotate, phoneXRotate));
-
-        /**  Let all the trackable listeners know where the phone is.  */
-        for (VuforiaTrackable trackable : allTrackables) {
-            ((VuforiaTrackableDefaultListener) trackable.getListener()).setPhoneInformation(robotFromCamera, parameters.cameraDirection);
-        }
-
-        // WARNING:
-        // In this sample, we do not wait for PLAY to be pressed.  Target Tracking is started immediately when INIT is pressed.
-        // This sequence is used to enable the new remote DS Camera Preview feature to be used with this sample.
-        // CONSEQUENTLY do not put any driving commands in this loop.
-        // To restore the normal opmode structure, just un-comment the following line:
-
-        // waitForStart();
-
-        // Note: To use the remote camera preview:
-        // AFTER you hit Init on the Driver Station, use the "options menu" to select "Camera Stream"
-        // Tap the preview window to receive a fresh image.
-
-        targetsSkyStone.activate();
+        fourthAuto();
         waitForStart();
-        autoBlueRight();
 
-        driveForward(0.75, 30);
-        flipArm.setTargetPosition(10);
-        flipArm.setPower(0.5);
-        flipArm.setTargetPosition(1); //maybe works? //AAAAAAAAAAAAAAAAAAAA
-        sleep(2000);
-        flipArm.setPower(0);
-        driveForward(0.5, 12);
-        sleep(500);
-        clampClaw.setPosition(1);
-        sleep(1000);
-        turnLeft(0.5, 45);
-        driveForward(0.75, 80);
-        clampClaw.setPosition(0);
-        sleep(500);
-        driveReverse(0.7, 40);
-//        clampClaw.setPosition(1);
-//        sleep(1000);
-//        turnLeft(0.5, 45);
-//        driveForward(0.75, 80);
-//        clampClaw.setPosition(0);
-//        sleep(500);
-//        driveReverse(0.7, 40);
 
-        while (!isStopRequested()) {
-
-            // check all the trackable targets to see which one (if any) is visible.
-            targetVisible = false;
-            for (VuforiaTrackable trackable : allTrackables) {
-                if (((VuforiaTrackableDefaultListener)trackable.getListener()).isVisible()) {
-                    telemetry.addData("Visible Target", trackable.getName());
-                    targetVisible = true;
-
-                    // getUpdatedRobotLocation() will return null if no new information is available since
-                    // the last time that call was made, or if the trackable is not currently visible.
-                    OpenGLMatrix robotLocationTransform = ((VuforiaTrackableDefaultListener)trackable.getListener()).getUpdatedRobotLocation();
-                    if (robotLocationTransform != null) {
-                        lastLocation = robotLocationTransform;
-                    }
-                    break;
-                }
-            }
-
-            // Provide feedback as to where the robot is located (if we know).
-            if (targetVisible) {
-                // express position (translation) of robot in inches.
-                VectorF translation = lastLocation.getTranslation();
-                telemetry.addData("Pos (in)", "{X, Y, Z} = %.1f, %.1f, %.1f",
-                        translation.get(0) / mmPerInch, translation.get(1) / mmPerInch, translation.get(2) / mmPerInch);
-
-                // express the rotation of the robot in degrees.
-                Orientation rotation = Orientation.getOrientation(lastLocation, EXTRINSIC, XYZ, DEGREES);
-                telemetry.addData("Rot (deg)", "{Roll, Pitch, Heading} = %.0f, %.0f, %.0f", rotation.firstAngle, rotation.secondAngle, rotation.thirdAngle);
-                auto();
-            }
-            else {
-                telemetry.addData("Visible Target", "none");
-            }
+        runtime.reset();
+        while (opModeIsActive()) {
+            telemetry.addData("Values", valLeft+"   "+valMid+"   "+valRight);
+            telemetry.addData("Height", rows);
+            telemetry.addData("Width", cols);
 
             telemetry.update();
-        }
-
-        // Disable Tracking when we are done;
-        targetsSkyStone.deactivate();
-
-    }
-
-    /*
-     *  Method to perfmorm a relative move, based on encoder counts.
-     *  Encoders are not reset as the move is based on the current position.
-     *  Move will stop if any of three conditions occur:
-     *  1) Move gets to the desired position
-     *  2) Move runs out of time
-     *  3) Driver stops the opmode running.
-     */
-    public void encoderDrive(double speed, double leftInches1, double leftInches2, double rightInches1,double rightInches2, double timeoutS) {
-        int new_tLeftTarget;
-        int new_tRightTarget;
-        int new_bLeftTarget;
-        int new_bRightTarget;
-
-        // Note: Reverse movement is obtained by setting a negative distance (not speed)
-        // encoderDrive(drive_Speed, Front Left, Front Right, Rear Left, Rear Right, timeout)
-        //encoderDrive(DRIVE_SPEED,  48,  48, 48, 48, 1.0);  // Drive Straight
-        //encoderDrive(DRIVE_SPEED, -24, -24, -24, -24, 1.0);  // drive reverse
-        //encoderDrive(DRIVE_SPEED, 12, -12, 12, -12, 1.0); // Turn Right
-        //encoderDrive(DRIVE_SPEED, -12, 12, -12, 12, 1.0); //Turn Left
-        //encoderDrive(TURN_SPEED,   12, 12, -12, -12, 1.0);  // DO NOT USE, IT RIPS THE ROBOT APART
-        //encoderDrive(DRIVE_SPEED, 12, 12, -12, -12, 1.0);//Strafe Left
-        //encoderDrive(DRIVE_SPEED, -2, 2, -2, 2, 1.0);//Go Forward
-        // Ensure that the opmode is still active
-
-        if (opModeIsActive()) {
-
-            // Determine new target position, and pass to motor controller
-            new_tLeftTarget = leftFront.getCurrentPosition() + (int) (leftInches1 * COUNTS_PER_INCH);
-            new_tRightTarget = rightFront.getCurrentPosition() + (int) (rightInches1 * COUNTS_PER_INCH);
-            new_bLeftTarget = leftRear.getCurrentPosition() + (int) (leftInches2 * COUNTS_PER_INCH);
-            new_bRightTarget = rightRear.getCurrentPosition() + (int) (rightInches2 * COUNTS_PER_INCH);
-            leftFront.setTargetPosition(new_tLeftTarget);
-            rightFront.setTargetPosition(new_tRightTarget);
-            leftRear.setTargetPosition(new_bLeftTarget);
-            rightRear.setTargetPosition(new_bRightTarget);
-
-            // Turn On RUN_TO_POSITION
-            leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            leftRear.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            rightRear.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-            // reset the timeout time and start motion.
-            runtime.reset();
-            leftFront.setPower(speed);
-            rightFront.setPower(speed);
-            leftRear.setPower(speed);
-            rightRear.setPower(speed);
-
-            // keep looping while we are still active, and there is time left, and both motors are running.
-            while (opModeIsActive() &&
-                    (runtime.seconds() < timeoutS) &&
-                    (leftFront.isBusy() && rightFront.isBusy() && leftRear.isBusy() && rightRear.isBusy())) {
-
-                // Display it for the driver.
-                telemetry.addData("Path1", "Running to %7d :%7d :%7d :%7d", new_tLeftTarget, new_tRightTarget, new_bLeftTarget, new_bRightTarget);
-                telemetry.addData("Path2", "Running at %7d :%7d :%7d :%7d",
-                        leftFront.getCurrentPosition(),
-                        rightFront.getCurrentPosition(),
-                        leftRear.getCurrentPosition(),
-                        rightRear.getCurrentPosition());
-                telemetry.update();
+            sleep(100);
+            //call movement functions
+//            strafe(0.4, 200);
+//            moveDistance(0.4, 700);
 
 
+            if(valLeft==0){
+                p = -1;
+                telemetry.addData("position", "left");
+            }
+            else if (valMid==0){
+                p = 0;
+                telemetry.addData("position", "middle");
+            }
+            else if (valRight==0){
+                p = 1;
+                telemetry.addData("position", "right");
             }
 
-            // Stop all motion;
-            leftFront.setPower(0);
-            rightFront.setPower(0);
-            leftRear.setPower(0);
-            rightRear.setPower(0);
+            drivetoDist(7);
 
-            // Turn off RUN_TO_POSITION
-            leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            if(p==-1){
+                strafeLeft(0.5, 30);
+                telemetry.addData("position", "left");
+
+                driveReverse(0.025,25);
+                sleep(1000);
+
+//                rotateClaw.setPosition(0);
+//                sleep(2000);
+
+                flipArm.setTargetPosition(825);
+                flipArm.setPower(0.25);
+                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                rotateClaw.setPosition(-1);
+                sleep(1000);
+
+                rotateClaw.setPosition(-1);
+                sleep(1000);
+
+                clampClaw.setPosition(1);
+
+                drivetoDist(6f);
+
+                clampClaw.setPosition(0);
+                sleep(1000);
+
+                driveReverse(0.025, 20);
+                sleep(1000);
+
+                turnLeft(0.5, 22.5);
+                driveForward(0.076, 200);
+                sleep(1000);
+
+                clampClaw.setPosition(1);
+                sleep(1000);
+
+                rotateClaw.setPosition(1);
+                sleep(1000);
+
+                flipArm.setTargetPosition(0);
+                flipArm.setPower(0.25);
+                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sleep(2000);
+                driveReverse(1, 100);
+                sleep(100000);
+
+            }
+            else if (p==0){
+                strafeLeft(0.5, 12.5);
+                telemetry.addData("position", "middle");
+
+                driveReverse(0.025,25);
+                sleep(1000);
+
+//                rotateClaw.setPosition(0);
+//                sleep(2000);
+
+                flipArm.setTargetPosition(825);
+                flipArm.setPower(0.25);
+                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                rotateClaw.setPosition(-1);
+                sleep(1000);
+
+                rotateClaw.setPosition(-1);
+                sleep(1000);
+
+                clampClaw.setPosition(1);
+
+                drivetoDist(6f);
+
+                clampClaw.setPosition(0);
+                sleep(1000);
+
+                driveReverse(0.025, 20);
+                sleep(1000);
+
+                turnLeft(0.5, 22.5);
+                driveForward(0.067, 200);
+                sleep(1000);
+
+                clampClaw.setPosition(1);
+                sleep(1000);
+
+                rotateClaw.setPosition(1);
+                sleep(1000);
+
+                flipArm.setTargetPosition(0);
+                flipArm.setPower(0.25);
+                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sleep(2000);
+                driveReverse(1, 100);
+                sleep(100000);
+            }
+            else if (p==1){
+                strafeLeft(0.5, 10);
+                telemetry.addData("position", "right");
+
+                driveReverse(0.025,25);
+                sleep(1000);
+
+//                rotateClaw.setPosition(0);
+//                sleep(2000);
+
+                flipArm.setTargetPosition(825);
+                flipArm.setPower(0.25);
+                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                rotateClaw.setPosition(-1);
+                sleep(1000);
+
+                rotateClaw.setPosition(-1);
+                sleep(1000);
+
+                clampClaw.setPosition(1);
+
+                drivetoDist(6f);
+
+                clampClaw.setPosition(0);
+                sleep(1000);
+
+                driveReverse(0.025, 20);
+                sleep(1000);
+
+                turnLeft(0.5, 22.5);
+                driveForward(0.067, 200);
+                sleep(1000);
+
+                clampClaw.setPosition(1);
+                sleep(1000);
+
+                rotateClaw.setPosition(1);
+                sleep(1000);
+
+                flipArm.setTargetPosition(0);
+                flipArm.setPower(0.25);
+                flipArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sleep(2000);
+                driveReverse(1, 100);
+                sleep(100000);
+            }
+
 
         }
     }
-}
 
+    //detection pipeline
+    static class StageSwitchingPipeline extends OpenCvPipeline
+    {
+        Mat yCbCrChan2Mat = new Mat();
+        Mat thresholdMat = new Mat();
+        Mat all = new Mat();
+        List<MatOfPoint> contoursList = new ArrayList<>();
+
+        enum Stage
+        {//color difference. greyscale
+            detection,//includes outlines
+            THRESHOLD,//b&w
+            RAW_IMAGE,//displays raw view
+        }
+
+        private Stage stageToRenderToViewport = Stage.detection;
+        private Stage[] stages = Stage.values();
+
+        @Override
+        public void onViewportTapped()
+        {
+            /*
+             * Note that this method is invoked from the UI thread
+             * so whatever we do here, we must do quickly.
+             */
+
+            int currentStageNum = stageToRenderToViewport.ordinal();
+
+            int nextStageNum = currentStageNum + 1;
+
+            if(nextStageNum >= stages.length)
+            {
+                nextStageNum = 0;
+            }
+
+            stageToRenderToViewport = stages[nextStageNum];
+        }
+
+        @Override
+        public Mat processFrame(Mat input)
+        {
+            contoursList.clear();
+            /*
+             * This pipeline finds the contours of yellow blobs such as the Gold Mineral
+             * from the Rover Ruckus game.
+             */
+
+            //color diff cb.
+            //lower cb = more blue = skystone = white
+            //higher cb = less blue = yellow stone = grey
+            Imgproc.cvtColor(input, yCbCrChan2Mat, Imgproc.COLOR_RGB2YCrCb);//converts rgb to ycrcb
+            Core.extractChannel(yCbCrChan2Mat, yCbCrChan2Mat, 2);//takes cb difference and stores
+
+            //b&w
+            Imgproc.threshold(yCbCrChan2Mat, thresholdMat, 102, 255, Imgproc.THRESH_BINARY_INV);
+
+            //outline/contour
+            Imgproc.findContours(thresholdMat, contoursList, new Mat(), Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_SIMPLE);
+            yCbCrChan2Mat.copyTo(all);//copies mat object
+            //Imgproc.drawContours(all, contoursList, -1, new Scalar(255, 0, 0), 3, 8);//draws blue contours
+
+
+            //get values from frame
+            double[] pixMid = thresholdMat.get((int)(input.rows()* midPos[1]), (int)(input.cols()* midPos[0]));//gets value at circle
+            valMid = (int)pixMid[0];
+
+            double[] pixLeft = thresholdMat.get((int)(input.rows()* leftPos[1]), (int)(input.cols()* leftPos[0]));//gets value at circle
+            valLeft = (int)pixLeft[0];
+
+            double[] pixRight = thresholdMat.get((int)(input.rows()* rightPos[1]), (int)(input.cols()* rightPos[0]));//gets value at circle
+            valRight = (int)pixRight[0];
+
+            //create three points
+            Point pointMid = new Point((int)(input.cols()* midPos[0]), (int)(input.rows()* midPos[1]));
+            Point pointLeft = new Point((int)(input.cols()* leftPos[0]), (int)(input.rows()* leftPos[1]));
+            Point pointRight = new Point((int)(input.cols()* rightPos[0]), (int)(input.rows()* rightPos[1]));
+
+            //draw circles on those points
+            Imgproc.circle(all, pointMid,5, new Scalar( 255, 0, 0 ),1 );//draws circle
+            Imgproc.circle(all, pointLeft,5, new Scalar( 255, 0, 0 ),1 );//draws circle
+            Imgproc.circle(all, pointRight,5, new Scalar( 255, 0, 0 ),1 );//draws circle
+
+            //draw 3 rectangles
+            Imgproc.rectangle(//1-3
+                    all,
+                    new Point(
+                            input.cols()*(leftPos[0]-rectWidth/2),
+                            input.rows()*(leftPos[1]-rectHeight/2)),
+                    new Point(
+                            input.cols()*(leftPos[0]+rectWidth/2),
+                            input.rows()*(leftPos[1]+rectHeight/2)),
+                    new Scalar(0, 255, 0), 3);
+            Imgproc.rectangle(//3-5
+                    all,
+                    new Point(
+                            input.cols()*(midPos[0]-rectWidth/2),
+                            input.rows()*(midPos[1]-rectHeight/2)),
+                    new Point(
+                            input.cols()*(midPos[0]+rectWidth/2),
+                            input.rows()*(midPos[1]+rectHeight/2)),
+                    new Scalar(0, 255, 0), 3);
+            Imgproc.rectangle(//5-7
+                    all,
+                    new Point(
+                            input.cols()*(rightPos[0]-rectWidth/2),
+                            input.rows()*(rightPos[1]-rectHeight/2)),
+                    new Point(
+                            input.cols()*(rightPos[0]+rectWidth/2),
+                            input.rows()*(rightPos[1]+rectHeight/2)),
+                    new Scalar(0, 255, 0), 3);
+
+            switch (stageToRenderToViewport)
+            {
+                case THRESHOLD:
+                {
+                    return thresholdMat;
+                }
+
+                case detection:
+                {
+                    return all;
+                }
+
+                case RAW_IMAGE:
+                {
+                    return input;
+                }
+
+                default:
+                {
+                    return input;
+                }
+            }
+        }
+
+    }
+}
